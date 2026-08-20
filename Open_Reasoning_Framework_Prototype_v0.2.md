@@ -791,29 +791,41 @@ open-reasoning-framework/
 │
 ├── frameworks/
 │   ├── role_and_naming/
+│   │   ├── framework.yaml
+│   │   └── operators/
 │   ├── interest_structure/
+│   │   ├── framework.yaml
+│   │   └── operators/
 │   ├── incentive_structure/
+│   │   ├── framework.yaml
+│   │   └── operators/
 │   ├── power_structure/
+│   │   ├── framework.yaml
+│   │   └── operators/
 │   ├── cognitive_bias/
+│   │   ├── framework.yaml
+│   │   └── operators/
 │   ├── bounded_rationality/
+│   │   ├── framework.yaml
+│   │   └── operators/
 │   ├── system_feedback/
+│   │   ├── framework.yaml
+│   │   └── operators/
 │   └── falsification/
+│       ├── framework.yaml
+│       └── operators/
 │
-├── operators/
-│   ├── role/
-│   ├── interest/
-│   ├── incentive/
-│   ├── power/
-│   ├── cognition/
-│   ├── system/
-│   └── falsification/
+├── combinators/
+│   └── cognitive_gap/
 │
 ├── schemas/
 │   ├── framework.schema.json
 │   ├── operator.schema.json
+│   ├── combinator.schema.json
 │   └── output.schema.json
 │
 ├── runtime/
+│   ├── adapter/
 │   ├── selector/
 │   ├── executor/
 │   ├── cross_audit/
@@ -822,6 +834,7 @@ open-reasoning-framework/
 ├── evaluations/
 │   ├── cases/
 │   ├── benchmarks/
+│   ├── golden_sets/
 │   └── regression/
 │
 ├── examples/
@@ -835,6 +848,8 @@ open-reasoning-framework/
     ├── architecture/
     └── governance/
 ```
+
+算子放在所属框架目录下（取消独立 `operators/` 树），避免框架与算子双树漂移。
 
 ---
 
@@ -898,7 +913,21 @@ Structured Output + Audit Log
 - 单一 Framework；
 - 多 Framework + Cross-Audit。
 
-## 18.2 核心指标
+## 18.2 Ground Truth 与两阶段评测
+
+### 阶段一：专家盲评（验证第 28 节核心假设）
+
+- 对每个测试案例，将四基线（裸 LLM 零样本 / 大型系统提示词 / 单一 Framework / 多 Framework + Cross-Audit）的输出混合打乱、隐藏来源；
+- 专家成对比较并沿 18.3 指标维度评分；
+- 盲评回答一个问题：ORF 是否比基线更稳定地发现遗漏变量、反例与推翻条件。
+
+### 阶段二：渐进 golden 变量集（回归资产）
+
+- 从核心测试案例起，每案例由 2～3 位专家**独立**预标注“已知重要变量清单”，保留分歧、不强行合并；
+- 覆盖率指标落地为对 golden 集的召回率；
+- 分工：盲评出结论，golden 集防回归，两者不互相替代。
+
+## 18.3 核心指标
 
 ### 覆盖率
 
@@ -1022,6 +1051,8 @@ falsification.refutation_condition@1.1.3
 
 核心逻辑不能悄悄漂移。
 
+Schema 字段结构变更（如 localized map、类型化输入输出声明）属破坏性变更，必须走上述变更记录流程。
+
 ---
 
 # 22. AI 治理要求
@@ -1139,7 +1170,12 @@ POST /falsify
 
 **处理：**
 
-强制 Schema、Operators 和测试案例。
+强制 Schema 与测试案例只是第一层。完整防线是引擎四层论（见 2.2 节）：
+
+1. Schema 校验——结构正确性强制；
+2. 编排纪律——选择、并行、对抗角色指派由 Runtime 决定；
+3. 契约强制——输出缺字段即拒绝重跑，攻击者不得沉默；
+4. 评测回归——对基线持续对照，逻辑漂移被测试捕获。
 
 ---
 
