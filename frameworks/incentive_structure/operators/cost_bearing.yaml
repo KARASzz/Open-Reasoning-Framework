@@ -1,0 +1,57 @@
+id: incentive.cost_bearing
+unit_type: operator
+framework: incentive_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 执行成本承担检查
+
+description:
+  zh: >
+    检查被期望行为的执行成本（时间、精力、技能学习、社交风险）
+    由谁承担，识别"组织点菜、员工买单"的成本转嫁。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: incentive_rules
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 被期望的行为需要行动者额外付出什么？
+  - 这些付出是否被看见、被计量、被补偿？
+  - 成本是否挤占了行动者的既定考核目标？
+
+required_evidence:
+  - 新行为的实际时间成本记录
+  - 考核目标是否相应调整
+  - 行动者的负荷陈述（需与客观记录对照）
+
+possible_findings:
+  - 成本由组织吸收（减负、调目标、给资源）
+  - 成本由行动者承担且挤占原目标
+  - 成本部分补偿
+  - 无法判断
+
+counterexamples:
+  - 行动者自愿承担成本以换取能力积累，视成本为投资
+  - 成本看似转嫁，实为行业通行惯例且已被薪酬定价覆盖
+
+failure_conditions:
+  - 无法量化行为成本
+  - 行动者不敢如实报告负荷（心理安全感缺失）
+
+boundary_criteria:
+  answers: 被期望行为的成本归属
+  does_not_answer: 成本在系统中的转移路径（system_feedback 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

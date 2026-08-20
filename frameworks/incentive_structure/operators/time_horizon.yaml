@@ -1,0 +1,56 @@
+id: incentive.time_horizon
+unit_type: operator
+framework: incentive_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 激励的时间取向
+
+description:
+  zh: >
+    检查当前激励强化的是短期行为还是长期行为，识别以透支
+    长期价值换取短期指标的规则设计。
+
+inputs:
+  - type: problem_statement
+  - type: incentive_rules
+  - type: action_outcome_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 奖励的兑现周期是多长？
+  - 长期后果（质量、口碑、能力积累）是否进入考核？
+  - 短期达标与长期损害同时发生时，规则奖励哪一边？
+
+required_evidence:
+  - 考核周期与兑现周期条款
+  - 跨期结果追踪记录（如客户续费率、返工率）
+
+possible_findings:
+  - 激励兼顾长短期
+  - 激励显著偏短期
+  - 激励显著偏长期但缺乏短期生存保障
+  - 无法判断
+
+counterexamples:
+  - 短期激励占主导但处于生存期组织，属合理权衡
+  - 长期激励（股权）存在但因退出成本高而失去激励效力
+
+failure_conditions:
+  - 无法获得跨期结果数据
+  - 激励规则频繁变动，无法确定稳定预期
+
+boundary_criteria:
+  answers: 激励兑现的时间结构对行为的引导方向
+  does_not_answer: 反馈回路中的延迟效应（system_feedback 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

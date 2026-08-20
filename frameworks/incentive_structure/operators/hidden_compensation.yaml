@@ -1,0 +1,57 @@
+id: incentive.hidden_compensation
+unit_type: operator
+framework: incentive_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 隐性补偿检查
+
+description:
+  zh: >
+    在显性收益风险不对称的表象下，检查是否存在晋升、股权、
+    豁免权、声誉、学习机会等隐性补偿，避免误判激励真空。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: action_outcome_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 除显性报酬外，行动者实际获得了什么？
+  - 这些隐性收益对行动者本人的价值有多大？
+  - 隐性补偿是稳定的制度安排还是偶发运气？
+
+required_evidence:
+  - 晋升与调岗记录
+  - 行动者本人的偏好陈述（需多方交叉验证）
+  - 同类岗位的外部对照
+
+possible_findings:
+  - 存在足额隐性补偿，显性不对称被对冲
+  - 隐性补偿存在但不稳定、不可预期
+  - 无实质隐性补偿
+  - 无法判断
+
+counterexamples:
+  - 行动者声称看重隐性收益，实际行为（离职、消极）与之矛盾
+  - 隐性补偿只对部分人开放，形成内部不公平感
+
+failure_conditions:
+  - 无法获得行动者真实偏好，只能依赖组织单方定义"什么算补偿"
+  - 隐性收益无法与特定行为建立关联
+
+boundary_criteria:
+  answers: 显性激励缺失是否被隐性收益对冲
+  does_not_answer: 隐性收益的分配公平性（interest_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

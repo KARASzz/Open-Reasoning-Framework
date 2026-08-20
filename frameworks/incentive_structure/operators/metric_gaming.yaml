@@ -1,0 +1,56 @@
+id: incentive.metric_gaming
+unit_type: operator
+framework: incentive_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 指标表演检测
+
+description:
+  zh: >
+    检查规则是否激励了针对指标本身的表演行为，而非真实产出，
+    对应古德哈特定律：指标一旦成为目标，就不再是好指标。
+
+inputs:
+  - type: problem_statement
+  - type: incentive_rules
+  - type: action_outcome_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 指标提升与真实产出提升是否同步？
+  - 是否存在只做可被计量之事的挑活行为？
+  - 指标达成后，真实问题是否仍然存在？
+
+required_evidence:
+  - 指标数据与真实产出数据的对照
+  - 未被计量维度的结果记录（质量、投诉、返工）
+
+possible_findings:
+  - 指标与真实产出一致
+  - 指标表演显著（指标升、产出未升）
+  - 存在挑活与计量盲区
+  - 无法判断
+
+counterexamples:
+  - 指标与产出背离源于测量滞后而非表演（效果需要时间显现）
+  - 表面表演行为实际是应对不合理指标的理性自保
+
+failure_conditions:
+  - 只有指标数据，缺乏独立于指标的真实产出测量
+  - 指标定义近期变更，前后数据不可比
+
+boundary_criteria:
+  answers: 考核指标是否被策略性操纵
+  does_not_answer: 指标失真在系统中的传播与放大（system_feedback 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

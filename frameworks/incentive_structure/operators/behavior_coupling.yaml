@@ -1,0 +1,55 @@
+id: incentive.behavior_coupling
+unit_type: operator
+framework: incentive_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 行为-回报耦合综合判断
+
+description:
+  zh: >
+    综合算子：汇总本框架其余算子的发现，判断组织期望的行为
+    与实际回报结构是否耦合，输出激励结构问题的综合假设。
+
+inputs:
+  - type: problem_statement
+  - type: operator_findings_set
+  - type: evidence_reference
+
+outputs:
+  - type: hypothesis
+  - type: uncertainty_assessment
+
+questions:
+  - 组织口头期望的行为与规则实际奖励的行为是否一致？
+  - 各单项算子发现之间是否相互印证？
+  - 行为不活跃的最可能解释是激励问题还是其他框架问题？
+
+required_evidence:
+  - 本框架其余算子的执行结果
+  - 至少一个具体行为案例的完整链条（行为→结果→回报）
+
+possible_findings:
+  - 激励结构与期望行为耦合良好
+  - 激励结构与期望行为系统性脱钩
+  - 行为问题主因不在激励结构（移交其他框架）
+  - 无法判断
+
+counterexamples:
+  - 规则与行为脱钩但团队仍高产（使命、同伴压力、职业操守驱动）
+  - 表面耦合良好，实际行为由未被写明的潜规则驱动
+
+failure_conditions:
+  - 前序算子执行不完整
+  - 多个算子结论互相矛盾且无法归因
+
+boundary_criteria:
+  answers: 激励结构与期望行为的整体耦合判断
+  does_not_answer: 单个具体算子已覆盖的细分问题
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

@@ -1,0 +1,58 @@
+id: incentive.reward_risk_asymmetry
+unit_type: operator
+framework: incentive_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 收益风险不对称
+
+description:
+  zh: >
+    检查某项行为的收益归属与失败风险承担是否一致。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: action_outcome_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 成功后谁获得收益？
+  - 失败后谁承担责任？
+  - 行动者是否能分享到成功收益？
+  - 行动者是否承担超出收益范围的风险？
+
+required_evidence:
+  - 绩效制度
+  - 奖励规则
+  - 责任制度
+  - 实际案例
+
+possible_findings:
+  - 收益风险对称
+  - 收益集中、风险下沉
+  - 收益下沉、风险集中
+  - 无法判断
+
+counterexamples:
+  - 即使收益风险不对称，行为者仍高度积极（如使命驱动、长期声誉收益）
+  - 表面不对称但存在隐性补偿（晋升、股权、豁免权）
+
+failure_conditions:
+  - 缺乏真实激励数据
+  - 用户仅提供主观感受
+
+boundary_criteria:
+  answers: 行为与回报的耦合方式
+  does_not_answer: 收益成本的总体分配（interest_structure）、名义职责（role_and_naming）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

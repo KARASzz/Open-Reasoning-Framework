@@ -1,0 +1,59 @@
+id: incentive.responsibility_alignment
+unit_type: operator
+framework: incentive_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 激励对象与责任主体一致性
+
+description:
+  zh: >
+    检查被激励的人是否就是对结果负责的人，识别"考核旁观者、
+    追责执行者"的错位结构。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: incentive_rules
+  - type: responsibility_rules
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 考核与奖励指向谁？
+  - 出问题后追责指向谁？
+  - 两者是否指向同一主体？
+  - 错位时，被考核者能否影响被追责的结果？
+
+required_evidence:
+  - 考核对象清单
+  - 事故追责记录
+  - 岗位职责说明
+
+possible_findings:
+  - 激励对象与责任主体一致
+  - 考核旁观者、追责执行者
+  - 考核执行者、功劳归旁观者
+  - 无法判断
+
+counterexamples:
+  - 错位存在但组织以文化信任补偿（长期雇佣、内部转岗保护）
+  - 责任难以归因的协作场景中，错位是必要的风险池设计
+
+failure_conditions:
+  - 责任制度仅存在于纸面，无实际追责案例可查
+  - 组织结构近期大幅变动，历史数据失效
+
+boundary_criteria:
+  answers: 激励指向与责任指向是否同一主体
+  does_not_answer: 名义职责与实际职责是否一致（role_and_naming 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

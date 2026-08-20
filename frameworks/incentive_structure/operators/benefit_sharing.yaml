@@ -1,0 +1,58 @@
+id: incentive.benefit_sharing
+unit_type: operator
+framework: incentive_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 收益分享检查
+
+description:
+  zh: >
+    检查行动者能否分享自己创造的成功收益，识别"效率归组织、
+    激励为零"的激励真空。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: incentive_rules
+  - type: action_outcome_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 行动者创造的可量化收益中，有多大比例回流给行动者？
+  - 分享机制是制度化条款还是口头承诺？
+  - 分享是否随收益增长而同步增长？
+
+required_evidence:
+  - 分配制度文本
+  - 近一年实际分配记录
+  - 行动者对分配规则的知悉程度
+
+possible_findings:
+  - 存在制度化收益分享
+  - 有承诺但从未兑现
+  - 完全无收益分享
+  - 无法判断
+
+counterexamples:
+  - 无金钱分享但行动者看重非货币收益（成长、自主权、声誉）
+  - 分享比例低但基线收益已远高于外部选择
+
+failure_conditions:
+  - 仅有管理层单方陈述
+  - 无法区分个人贡献与团队贡献
+
+boundary_criteria:
+  answers: 成功收益是否回流给创造者
+  does_not_answer: 失败风险由谁承担（reward_risk_asymmetry 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null
