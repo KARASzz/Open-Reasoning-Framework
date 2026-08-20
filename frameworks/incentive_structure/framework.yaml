@@ -1,0 +1,29 @@
+id: incentive_structure
+unit_type: framework
+version: 1.0.0
+status: active
+
+name:
+  zh: 激励结构框架
+
+description:
+  zh: >
+    分析规则如何塑造行为动机：收益分享、风险承担、激励对象与责任主体
+    是否一致、短期与长期行为的强化方向，以及规则是否激励指标表演。
+
+source: 委托-代理理论、机制设计与组织行为学中的激励研究。
+
+core_questions:
+  - 行动者能否分享自己创造的成功收益？
+  - 行动者是否承担超出其收益范围的风险？
+  - 激励对象与责任主体是否一致？
+  - 激励是强化短期行为还是长期行为？
+  - 当前规则是否激励了指标表演而非真实产出？
+
+boundary_criteria:
+  answers: 规则如何塑造行为动机
+  does_not_answer: 收益与成本如何分配（interest_structure）
+
+related_frameworks:
+  - interest_structure
+  - role_and_naming

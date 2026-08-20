@@ -1,0 +1,26 @@
+id: falsification
+unit_type: framework
+version: 1.0.0
+status: active
+
+name:
+  zh: 证伪框架
+
+description:
+  zh: >
+    元框架：检验任何假设的可检验性。要求每个重大判断给出支持证据、
+    反对证据、可推翻条件与下一步验证，识别不可证伪的陈述。
+
+source: 卡尔·波普尔。
+
+core_questions:
+  - 当前判断是什么？
+  - 哪些事实支持它？
+  - 哪些事实可能推翻它？
+  - 有没有无法被证伪的陈述？
+  - 是否存在怎么解释都成立的理论？
+  - 什么测试可以最低成本验证？
+
+boundary_criteria:
+  answers: 任何假设的可检验性
+  does_not_answer: 不替代具体领域框架提出实质解释

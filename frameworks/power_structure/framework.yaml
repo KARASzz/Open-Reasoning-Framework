@@ -1,0 +1,30 @@
+id: power_structure
+unit_type: framework
+version: 1.0.0
+status: active
+
+name:
+  zh: 权力关系框架
+
+description:
+  zh: >
+    分析谁实际上能决定、否决与控制：决策执行权、否决权、资源与信息
+    通道控制、议程设置权，以及依赖关系与退出权的对称性。
+
+source: 马克斯·韦伯的权威与支配理论、组织研究中的权力与议程设置文献。
+
+core_questions:
+  - 谁的决定能够被执行？
+  - 谁可以否决他人的决定？
+  - 谁控制关键资源与信息通道？
+  - 谁设定议程（决定哪些问题被讨论、哪些不被讨论）？
+  - 依赖关系是否单向？
+  - 退出权是否对称？
+
+boundary_criteria:
+  answers: 谁实际上能决定、否决与控制
+  does_not_answer: 名义角色与应然职责（role_and_naming）
+
+related_frameworks:
+  - role_and_naming
+  - interest_structure

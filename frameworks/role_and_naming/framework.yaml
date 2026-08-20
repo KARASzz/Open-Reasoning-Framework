@@ -1,0 +1,32 @@
+id: role_and_naming
+unit_type: framework
+version: 1.0.0
+status: active
+
+name:
+  zh: 角色与正名框架
+
+description:
+  zh: >
+    检查名义角色与实际角色、名义授权与实际授权、应然职责与实然职责之间
+    是否一致，识别制度语言与真实运行之间的差距。
+
+source: 孔子及后续儒家角色秩序思想。
+
+core_questions:
+  - 名义角色是什么？
+  - 实际角色是什么？
+  - 权力、责任、能力是否匹配？
+  - 谁应该决定？
+  - 谁实际上在决定？
+  - 谁应该负责？
+  - 谁实际上承担责任？
+  - 制度语言与真实运行是否一致？
+
+boundary_criteria:
+  answers: 名义授权与实际授权、应然职责与实然职责的差距
+  does_not_answer: 谁实际控制关键资源与议程（power_structure）、规则如何塑造行为动机（incentive_structure）
+
+related_frameworks:
+  - power_structure
+  - incentive_structure

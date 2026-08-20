@@ -1,0 +1,30 @@
+id: system_feedback
+unit_type: framework
+version: 1.0.0
+status: active
+
+name:
+  zh: 系统反馈框架
+
+description:
+  zh: >
+    分析变量间的相互影响、正负反馈回路与延迟效应，识别成本转移、
+    局部效率与系统效率的背离，以及被优化到失真的指标。
+
+source: 系统动力学、控制论与组织学习研究。
+
+core_questions:
+  - 变量之间如何相互影响？
+  - 哪些是正反馈？
+  - 哪些是负反馈？
+  - 是否存在延迟效应？
+  - 当前优化是否把成本转移到了别处？
+  - 局部效率提高是否导致系统效率下降？
+  - 哪些指标可能被优化到失真？
+
+boundary_criteria:
+  answers: 变量间的相互影响、反馈回路与延迟效应
+  does_not_answer: 单个行动者的动机（incentive_structure）
+
+related_frameworks:
+  - incentive_structure

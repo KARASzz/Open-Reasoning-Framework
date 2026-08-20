@@ -1,0 +1,31 @@
+id: cognitive_bias
+unit_type: framework
+version: 1.0.0
+status: active
+
+name:
+  zh: 认知偏差框架
+
+description:
+  zh: >
+    检查信息处理过程中的系统性偏差：确认偏差、沉没成本、可得性启发、
+    损失厌恶、锚定效应、结果与决策质量混淆、群体一致性压力。
+
+source: 卡尼曼、特沃斯基及行为决策研究。
+
+core_questions:
+  - 是否存在确认偏差？
+  - 是否受到沉没成本影响？
+  - 是否把容易回忆的事件当成高概率事件？
+  - 是否存在损失厌恶？
+  - 是否过度依赖第一个数字或方案？
+  - 是否将结果好坏误认为决策质量高低？
+  - 是否存在群体一致性压力？
+
+boundary_criteria:
+  answers: 信息处理过程中的系统性偏差
+  does_not_answer: 偏差背后的利益动机（interest_structure）
+
+related_frameworks:
+  - bounded_rationality
+  - interest_structure

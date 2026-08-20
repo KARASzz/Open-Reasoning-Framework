@@ -1,0 +1,31 @@
+id: bounded_rationality
+unit_type: framework
+version: 1.0.0
+status: active
+
+name:
+  zh: 有限理性框架
+
+description:
+  zh: >
+    在信息、时间、处理能力约束下评估决策质量：区分最优解与满意解，
+    判断哪些复杂度应由系统吸收、哪些判断必须保留给人。
+
+source: 赫伯特·西蒙。
+
+core_questions:
+  - 决策者实际掌握多少信息？
+  - 是否有足够时间？
+  - 是否有能力处理全部变量？
+  - 当前方案是最优解还是满意解？
+  - 哪些复杂度应该被系统吸收？
+  - 哪些判断必须保留给人？
+
+boundary_criteria:
+  answers: 信息、时间、处理能力约束下的决策质量
+  does_not_answer: 决策权归属是否正当（role_and_naming / power_structure）
+
+related_frameworks:
+  - cognitive_bias
+  - role_and_naming
+  - power_structure

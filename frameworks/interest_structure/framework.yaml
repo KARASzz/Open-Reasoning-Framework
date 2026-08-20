@@ -1,0 +1,33 @@
+id: interest_structure
+unit_type: framework
+version: 1.0.0
+status: active
+
+name:
+  zh: 利益结构框架
+
+description:
+  zh: >
+    分析收益、成本、资源控制与规则制定权在不同主体之间如何分配，
+    识别表面价值冲突背后的结构性利益冲突。
+
+source: 马克思及政治经济学传统。
+
+core_questions:
+  - 谁获得收益？
+  - 谁承担成本？
+  - 谁控制关键资源？
+  - 谁定义规则？
+  - 谁拥有谈判权？
+  - 谁拥有退出权？
+  - 谁承担失败风险？
+  - 谁享受成功收益？
+  - 表面价值冲突背后是否存在利益冲突？
+
+boundary_criteria:
+  answers: 收益、成本、资源控制与规则制定权如何分配
+  does_not_answer: 分配规则如何影响行为动机（incentive_structure）
+
+related_frameworks:
+  - incentive_structure
+  - power_structure
