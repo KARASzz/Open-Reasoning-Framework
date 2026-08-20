@@ -493,7 +493,7 @@ Schema 要点：
 # 9. 核心运行流程
 
 ```text
-用户输入现实问题
+用户输入（可携带 prior_analysis + new_evidence）
 ↓
 问题重述
 ↓
@@ -501,24 +501,22 @@ Schema 要点：
 ↓
 识别问题类型
 ↓
-选择 3～7 个最相关 Framework
+Framework Selector（LLM 选择 + 强制理由，Runtime 校验 3～7 边界）
 ↓
-调用 Framework 内的 Operators
+并行执行各框架 Operators（产出类型化对象，累积进推理图）
 ↓
-形成多路径解释
+Cross-Audit（并行单轮攻击 → 证伪过关）
 ↓
-不同框架互相攻击
+Synthesizer（硬保留规则综合）
 ↓
-寻找遗漏变量
+结构化输出 + 完整审计日志
 ↓
-生成反例和推翻条件
-↓
-要求补充关键证据
-↓
-形成当前最稳健假设
-↓
-给出下一步最低成本验证动作
+（可选）用户补充证据 → 携带 prior_analysis 再调用，仅重审受影响假设
 ```
+
+### 交互模型：无状态再分析
+
+Runtime 不维护会话状态。用户补充证据后，携带上一次的输出（`prior_analysis`）与新证据（`new_evidence`）再次调用，Runtime 仅对受新证据影响的假设重走互审。多轮能力由调用方通过再调用组装，库与 Runtime 保持无状态。
 
 ---
 
@@ -678,14 +676,17 @@ Falsification Framework 要求推翻条件
 
 # 13. 输出协议
 
-系统默认输出六层：
+系统默认输出七层（第 0 层 + 原六层）：
 
 ```markdown
+## 0. 选择理由
+Selector 选用了哪些框架、逐个命中理由。此层是用户质疑与纠正的入口。
+
 ## 1. 当前事实
 已经能够确认的信息。
 
 ## 2. 核心假设
-目前最可能成立的解释。
+目前最可能成立的解释。允许以“竞争假设集 + 证据不足声明”形态出现——当多个假设未被反驳时，不得强行合并为单一结论。
 
 ## 3. 多框架分析
 不同 Framework 给出的解释。
@@ -816,15 +817,17 @@ open-reasoning-framework/
 第一版 Runtime 可以非常简单。
 
 ```text
-Input
+Input（可携带 prior_analysis + new_evidence）
+↓
+Model Adapter（LLM 接入抽象层，所有 LLM 调用经由此层）
 ↓
 Problem Classifier
 ↓
 Framework Selector
 ↓
-Operator Executor
+Operator Executor（并行）
 ↓
-Cross-Audit
+Cross-Audit（并行单轮）
 ↓
 Evidence Checker
 ↓
@@ -832,7 +835,7 @@ Falsification
 ↓
 Synthesis
 ↓
-Structured Output
+Structured Output + Audit Log
 ```
 
 ### Framework Selector
@@ -847,6 +850,12 @@ Structured Output
 - 噪声增加；
 - 结论趋于模板化；
 - 每个问题都被分析成宇宙哲学大会。
+
+输出契约：问题类型标签 + 框架列表（3～7 个）+ 每个框架一句话命中理由。Runtime 校验数量边界，越界即拒绝。选择理由对用户可见、可质疑，并进入审计日志。
+
+### Model Adapter
+
+所有 LLM 调用经由统一适配层。换模型只需换 adapter，编排与契约不变——这是成功标准“不同 LLM 接入后仍能保持基本推理结构”的实现前提。
 
 ---
 
