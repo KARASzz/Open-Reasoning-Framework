@@ -424,11 +424,25 @@ Framework: 利益结构
 
 ```yaml
 id: incentive.reward_risk_asymmetry
-name: 收益风险不对称
+name:
+  zh: 收益风险不对称
+  # en: Reward-Risk Asymmetry（i18n 预留，MVP 只填中文）
 framework: incentive_structure
+version: 1.0.0
+unit_type: operator   # operator | combinator
 
-description: >
-  检查某项行为的收益归属与失败风险承担是否一致。
+description:
+  zh: >
+    检查某项行为的收益归属与失败风险承担是否一致。
+
+inputs:                # 类型化输入：引用前序产物或用户输入的对象类型
+  - type: problem_statement
+  - type: actor_list
+  - type: action_outcome_records
+outputs:               # 类型化输出：写入推理图的对象
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
 
 questions:
   - 成功后谁获得收益？
@@ -449,11 +463,16 @@ possible_findings:
   - 无法判断
 
 counterexamples:
-  - 即使收益风险不对称，行为者仍高度积极
+  - 即使收益风险不对称，行为者仍高度积极（如使命驱动、长期声誉收益）
+  - 表面不对称但存在隐性补偿（晋升、股权、豁免权）
 
 failure_conditions:
   - 缺乏真实激励数据
   - 用户仅提供主观感受
+
+boundary_criteria:
+  answers: 行为与回报的耦合方式
+  does_not_answer: 收益成本的总体分配（利益结构）、名义职责（角色与正名）
 
 output:
   hypothesis:
@@ -461,6 +480,13 @@ output:
   uncertainty:
   next_validation:
 ```
+
+Schema 要点：
+
+- `inputs` / `outputs` 为类型化声明，算子消费与产出的都是推理图中的类型化对象，而非自由文本；
+- 所有文本字段采用 localized map 结构（如 `name.zh`），MVP 只填中文；
+- `boundary_criteria`、`counterexamples`（≥ 2）、`failure_conditions` 为强制字段；
+- 输出契约四件套：`hypothesis / evidence / uncertainty / next_validation`，缺任何一项即被 Runtime 拒绝。
 
 ---
 
