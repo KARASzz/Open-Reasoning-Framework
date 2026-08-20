@@ -1,0 +1,55 @@
+id: interest.synthesis
+unit_type: operator
+framework: interest_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 利益结构综合判断
+
+description:
+  zh: >
+    综合算子：汇总本框架其余算子的发现，输出关于利益分配
+    格局的整体假设与竞争性解释。
+
+inputs:
+  - type: problem_statement
+  - type: operator_findings_set
+  - type: evidence_reference
+
+outputs:
+  - type: hypothesis
+  - type: uncertainty_assessment
+
+questions:
+  - 利益分配的整体格局是什么？
+  - 若存在失衡，是否有维持失衡的机制（规则、资源、退出壁垒）？
+  - 当前矛盾主要是分配问题还是增量问题？
+
+required_evidence:
+  - 本框架其余算子的执行结果
+  - 至少一个完整利益链条案例（收益→成本→规则→退出权）
+
+possible_findings:
+  - 利益结构大体均衡
+  - 存在系统性失衡且有维持机制
+  - 失衡存在但正在变化中
+  - 无法判断
+
+counterexamples:
+  - 失衡结构被组织合法性或文化补偿（成员接受现状为正当）
+  - 外部环境变化即将强制再平衡（失衡是暂时稳态）
+
+failure_conditions:
+  - 前序算子执行不完整
+  - 各算子结论互相矛盾且无法归因
+
+boundary_criteria:
+  answers: 利益格局的整体判断
+  does_not_answer: 单项算子已覆盖的细分问题
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

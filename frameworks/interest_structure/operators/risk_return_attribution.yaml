@@ -1,0 +1,56 @@
+id: interest.risk_return_attribution
+unit_type: operator
+framework: interest_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 风险收益归属检查
+
+description:
+  zh: >
+    检查承担失败风险与享受成功收益的主体是否一致，
+    识别"成功揽功、失败诿过"的归属结构。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: action_outcome_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 成功后谁获得晋升、奖励与表彰？
+  - 失败后谁被问责、降级或淘汰？
+  - 担风险主体与享收益主体是否同一？
+
+required_evidence:
+  - 成功与失败案例各至少若干例
+  - 奖励与问责记录
+
+possible_findings:
+  - 风险与收益归属一致
+  - 成功揽功、失败诿过
+  - 失败担责、成功分利
+  - 无法判断
+
+counterexamples:
+  - 失败问责指向决策者而非执行者（问责与决策权对称，并非诿过）
+  - 表面诿过失为共同决策下的责任界定不清
+
+failure_conditions:
+  - 成功与失败案例样本不足
+  - 奖励与问责记录不公开
+
+boundary_criteria:
+  answers: 失败风险与成功收益的主体归属是否一致
+  does_not_answer: 该归属对行为积极性的影响（incentive_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

@@ -1,0 +1,58 @@
+id: interest.resource_control
+unit_type: operator
+framework: interest_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 关键资源控制检查
+
+description:
+  zh: >
+    检查关键资源（预算、编制、数据、渠道、资质）的控制权
+    分布，识别资源垄断及其造成的依赖结构。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: resource_inventory
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 哪些资源对该问题构成关键约束？
+  - 各关键资源分别由谁控制？
+  - 控制是制度化的还是人格化的？
+  - 资源是否存在替代渠道或冗余？
+
+required_evidence:
+  - 资源分配制度
+  - 审批流与领用记录
+  - 替代渠道的实际可用性
+
+possible_findings:
+  - 资源控制分散且制度化
+  - 关键资源高度集中于单一主体
+  - 资源集中但存在制衡机制
+  - 无法判断
+
+counterexamples:
+  - 名义控制集中，实际已通过非正式渠道分流
+  - 资源集中是效率所需的必要设计（如合规集中审核）
+
+failure_conditions:
+  - 资源清单不完整
+  - 无法区分名义控制与实际控制
+
+boundary_criteria:
+  answers: 关键资源的控制结构
+  does_not_answer: 决策与否决权的行使过程（power_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

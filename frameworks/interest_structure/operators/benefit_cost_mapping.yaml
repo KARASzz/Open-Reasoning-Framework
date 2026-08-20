@@ -1,0 +1,58 @@
+id: interest.benefit_cost_mapping
+unit_type: operator
+framework: interest_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 收益成本归属映射
+
+description:
+  zh: >
+    将特定行为或政策的收益与成本分别映射到各主体，
+    识别"收益归甲、成本归乙"的结构性错位。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: action_outcome_records
+
+outputs:
+  - type: benefit_cost_map
+  - type: hypothesis
+  - type: evidence_reference
+
+questions:
+  - 收益流向哪些主体？
+  - 成本由哪些主体承担？
+  - 收益归属与成本归属是否成比例？
+  - 是否存在只受益不担成本、或只担成本不受益的主体？
+
+required_evidence:
+  - 收益分配记录
+  - 成本分摊记录
+  - 利益相关者清单
+
+possible_findings:
+  - 收益成本归属基本对称
+  - 收益集中、成本外移
+  - 成本集中、收益分散
+  - 无法判断
+
+counterexamples:
+  - 担成本主体自愿接受（战略性投入、长期交换关系）
+  - 表面错位实为跨期结算的时间差（当期担成本、远期得收益）
+
+failure_conditions:
+  - 收益或成本无法量化、无法归属
+  - 利益相关者清单不完整
+
+boundary_criteria:
+  answers: 收益与成本的归属结构
+  does_not_answer: 归属结构如何影响行为动机（incentive_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

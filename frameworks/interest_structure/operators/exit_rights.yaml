@@ -1,0 +1,57 @@
+id: interest.exit_rights
+unit_type: operator
+framework: interest_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 退出权与谈判力检查
+
+description:
+  zh: >
+    检查各主体退出权的实际可用性与谈判力，识别"走不了、
+    说不上话"的锁定结构。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 各主体能否退出当前关系？
+  - 退出的实际成本有多高？
+  - 退出威胁是否构成有效谈判筹码？
+  - 无退出权的主体是否有发声与申诉渠道？
+
+required_evidence:
+  - 合同与退出条款
+  - 历史退出案例及其代价
+  - 替代选择的实际可得性
+
+possible_findings:
+  - 退出权对称且可用
+  - 退出权严重不对称（一方被锁定）
+  - 名义可退出但成本高昂到不可行
+  - 无法判断
+
+counterexamples:
+  - 退出成本高但体制内回报同样高（金手铐效应，锁定是双向选择）
+  - 无退出权但有长期关系契约与声誉机制补偿
+
+failure_conditions:
+  - 退出成本无法估计
+  - 主体无法表达真实意愿（恐惧报复）
+
+boundary_criteria:
+  answers: 退出权与谈判力的对称性
+  does_not_answer: 谈判结果的分配公平性判断（需结合 benefit_cost_mapping）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

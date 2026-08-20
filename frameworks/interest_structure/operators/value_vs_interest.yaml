@@ -1,0 +1,57 @@
+id: interest.value_vs_interest
+unit_type: operator
+framework: interest_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 价值冲突与利益冲突识别
+
+description:
+  zh: >
+    当冲突呈现为价值观或理念之争时，检验剥离利益立场后
+    分歧是否仍然存在，识别以价值冲突面目出现的利益冲突。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 剥离各方利益立场后，分歧是否仍然存在？
+  - 若利益得到补偿，价值分歧是否缓和？
+  - 各方立场是否与其利益位置高度一致？
+
+required_evidence:
+  - 各方公开立场与表述
+  - 各方利益位置的事实材料
+  - 过往妥协或交易案例（如有）
+
+possible_findings:
+  - 真实的价值冲突
+  - 利益冲突伪装为价值冲突
+  - 价值与利益冲突交织
+  - 无法判断
+
+counterexamples:
+  - 价值冲突与利益冲突不可剥离（价值本身是利益的内化）
+  - 当事人确实未意识到自身立场受利益驱动（此时结论仍是利益驱动，但需更多证据）
+
+failure_conditions:
+  - 各方利益位置无法识别
+  - 当事人表述与真实利益被刻意混淆
+
+boundary_criteria:
+  answers: 冲突的底层结构是价值分歧还是利益分歧
+  does_not_answer: 冲突的化解方案设计（属于干预设计，不在分析范围）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

@@ -1,0 +1,58 @@
+id: interest.rule_making
+unit_type: operator
+framework: interest_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 规则制定权检查
+
+description:
+  zh: >
+    检查规则由谁制定、修改与解释，识别规则制定权被受益方
+    垄断、承担成本方被排除在制定过程之外的结构。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: incentive_rules
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 规则由谁发起、由谁批准？
+  - 承担成本的主体能否参与规则制定？
+  - 规则的解释者与执行者是否同一主体？
+  - 规则最近一次修改使谁受益？
+
+required_evidence:
+  - 规则制定与修订流程记录
+  - 意见征询与采纳记录
+  - 规则变更历史
+
+possible_findings:
+  - 规则制定开放、多方参与
+  - 规则制定被受益方垄断
+  - 形式开放、实质排除
+  - 无法判断
+
+counterexamples:
+  - 被排除方虽不参与制定，但拥有有效申诉与否决渠道
+  - 规则垄断源于外部监管要求而非内部利益动机
+
+failure_conditions:
+  - 规则变更历史不可追溯
+  - 制定过程非书面化且无多方证言
+
+boundary_criteria:
+  answers: 规则的制定、修改与解释权归属
+  does_not_answer: 规则如何塑造行为动机（incentive_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null
