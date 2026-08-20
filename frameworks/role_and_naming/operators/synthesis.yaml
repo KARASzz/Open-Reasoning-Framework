@@ -1,0 +1,55 @@
+id: role.synthesis
+unit_type: operator
+framework: role_and_naming
+version: 1.0.0
+status: active
+
+name:
+  zh: 角色结构综合判断
+
+description:
+  zh: >
+    综合算子：汇总本框架其余算子的发现，判断问题的主因
+    是否为角色名实结构，并给出与其他框架的移交建议。
+
+inputs:
+  - type: problem_statement
+  - type: operator_findings_set
+  - type: evidence_reference
+
+outputs:
+  - type: hypothesis
+  - type: uncertainty_assessment
+
+questions:
+  - 名实差距、授权差距、责任差距是否指向同一结构性原因？
+  - 角色错位是个体问题还是岗位设计问题？
+  - 修正角色定义能否解决问题，还是必须动权力与激励？
+
+required_evidence:
+  - 本框架其余算子的执行结果
+  - 至少两个同岗位或同链条案例对照
+
+possible_findings:
+  - 角色结构是主因（岗位设计问题）
+  - 角色结构是表象，主因在权力或激励
+  - 角色问题与个体能力问题并存
+  - 无法判断
+
+counterexamples:
+  - 同样的角色结构在另一团队运转良好（说明主因在团队而非结构）
+  - 角色错位是组织有意保留的模糊性（创新期组织的必要冗余）
+
+failure_conditions:
+  - 前序算子执行不完整
+  - 缺乏对照案例
+
+boundary_criteria:
+  answers: 角色结构是否为问题主因的整体判断
+  does_not_answer: 单项算子已覆盖的细分问题
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

@@ -1,0 +1,57 @@
+id: role.nominal_actual_gap
+unit_type: operator
+framework: role_and_naming
+version: 1.0.0
+status: active
+
+name:
+  zh: 名义角色与实际角色差距
+
+description:
+  zh: >
+    对比制度文本定义的角色与当事人实际承担的角色，
+    识别名实不符的角色错位。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: responsibility_rules
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 制度文本如何定义该角色？
+  - 当事人实际在做哪些事、不做哪些事？
+  - 名实差距持续了多久？是否被组织默认？
+
+required_evidence:
+  - 岗位说明书或角色定义文本
+  - 当事人的实际工作记录
+  - 同事与上级的多方证言
+
+possible_findings:
+  - 名义角色与实际角色一致
+  - 名大于实（头衔高于实际职能）
+  - 实大于名（实际职能超出名义授权）
+  - 无法判断
+
+counterexamples:
+  - 名实差距是过渡期安排（新设岗位、代理职务），属临时状态
+  - 角色定义本身宽泛，实际分化属正常演化而非错位
+
+failure_conditions:
+  - 无书面角色定义可对照
+  - 仅有当事人单方陈述
+
+boundary_criteria:
+  answers: 角色名与实的差距及其方向
+  does_not_answer: 差距背后的授权链条（role.authority_gap 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

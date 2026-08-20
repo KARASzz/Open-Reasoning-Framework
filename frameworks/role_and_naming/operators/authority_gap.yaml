@@ -1,0 +1,58 @@
+id: role.authority_gap
+unit_type: operator
+framework: role_and_naming
+version: 1.0.0
+status: active
+
+name:
+  zh: 名义授权与实际授权差距
+
+description:
+  zh: >
+    检查名义授权与实际决策空间是否一致，识别"给了头衔、
+    没给权力"的逐级请示结构。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: responsibility_rules
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 该角色名义上被授权决定哪些事项？
+  - 实际上哪些事项必须请示、由谁批准？
+  - 请示链条有多长、响应多慢？
+  - 越权或自作主张的历史案例如何被处理？
+
+required_evidence:
+  - 授权文件与审批权限表
+  - 实际审批流案例记录
+  - 越权处理先例
+
+possible_findings:
+  - 名义授权与实际授权一致
+  - 名义授权远大于实际授权
+  - 实际授权大于名义授权（先斩后奏被默许）
+  - 无法判断
+
+counterexamples:
+  - 请示是风险共担机制而非授权不足（重大事项集体决策属合理设计）
+  - 新任职者初期收紧授权是培养安排而非结构性错位
+
+failure_conditions:
+  - 授权边界无书面定义
+  - 无法获得实际审批流数据
+
+boundary_criteria:
+  answers: 授权名义与实际决策空间的差距
+  does_not_answer: 谁在幕后实际控制议程（power_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

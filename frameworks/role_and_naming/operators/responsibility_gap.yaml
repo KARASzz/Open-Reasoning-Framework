@@ -1,0 +1,59 @@
+id: role.responsibility_gap
+unit_type: operator
+framework: role_and_naming
+version: 1.0.0
+status: active
+
+name:
+  zh: 应然责任与实然责任差距
+
+description:
+  zh: >
+    检查"谁应该负责"与"谁实际上承担责任"是否一致，
+    识别责任悬浮（无人负责）与责任转嫁（代人受过）。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: responsibility_rules
+  - type: action_outcome_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 制度规定谁对该结果负责？
+  - 出事后实际被追责的是谁？
+  - 应负责者是否有能力影响结果？
+  - 是否存在"签字的人不决策、决策的人不签字"？
+
+required_evidence:
+  - 责任制度文本
+  - 事故与追责记录
+  - 决策链与签字链对照
+
+possible_findings:
+  - 应然责任与实然责任一致
+  - 责任悬浮（应负责者从不被追责）
+  - 责任转嫁（执行者替决策者受过）
+  - 无法判断
+
+counterexamples:
+  - 追责执行者因其确有操作过失（非转嫁）
+  - 集体负责制下责任分散是明示制度而非错位
+
+failure_conditions:
+  - 追责案例太少无法归纳
+  - 决策过程不可追溯
+
+boundary_criteria:
+  answers: 责任的名义归属与实际归属差距
+  does_not_answer: 问责力度是否恰当（属制度设计评价）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

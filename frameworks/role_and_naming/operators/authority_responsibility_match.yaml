@@ -1,0 +1,59 @@
+id: role.authority_responsibility_match
+unit_type: operator
+framework: role_and_naming
+version: 1.0.0
+status: active
+
+name:
+  zh: 权责能匹配检查
+
+description:
+  zh: >
+    检查同一角色的权力、责任、能力三者是否匹配，识别
+    "有责无权""有权无责""责大于能"三类失衡。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: responsibility_rules
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 该角色承担的责任需要哪些权力支撑？
+  - 这些权力是否实际到位？
+  - 履职所需能力与当事人实际能力是否匹配？
+  - 失衡出现时组织的补偿机制是什么（副手、助手、越级求助）？
+
+required_evidence:
+  - 责任清单与授权清单对照
+  - 履职失败案例及原因归类
+  - 培训与能力记录
+
+possible_findings:
+  - 权责能三者匹配
+  - 有责无权
+  - 有权无责
+  - 责大于能且无补偿机制
+  - 无法判断
+
+counterexamples:
+  - 有责无权但存在非正式影响力通道（实际运转良好）
+  - 能力缺口正被系统性培养（过渡期安排）
+
+failure_conditions:
+  - 权力与责任均无清单化定义
+  - 能力评估完全缺失
+
+boundary_criteria:
+  answers: 权力、责任、能力三者的匹配状态
+  does_not_answer: 失衡的动机性原因（incentive_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

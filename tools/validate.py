@@ -68,6 +68,10 @@ def main() -> int:
                 failed += 1
                 errors.append(f"{rel}: YAML 解析失败 → {e}")
                 continue
+            if not isinstance(data, dict):
+                failed += 1
+                errors.append(f"{rel}: YAML 未解析为映射（空文件或文件损坏）")
+                continue
 
             errs = sorted(validator.iter_errors(data), key=str)
             if errs:
@@ -90,6 +94,10 @@ def main() -> int:
     for path in sorted(glob.glob(str(ROOT / "frameworks/*/operators/*.yaml"))):
         rel = str(Path(path).relative_to(ROOT))
         data = load_yaml(path)
+        if not isinstance(data, dict):
+            failed += 1
+            errors.append(f"{rel}: YAML 未解析为映射，跳过交叉引用检查")
+            continue
         fw = data.get("framework")
         if fw not in framework_ids:
             failed += 1
@@ -107,6 +115,8 @@ def main() -> int:
     for path in sorted(glob.glob(str(ROOT / "frameworks/*/framework.yaml"))):
         rel = str(Path(path).relative_to(ROOT))
         data = load_yaml(path)
+        if not isinstance(data, dict):
+            continue
         for related in data.get("related_frameworks", []):
             if related not in framework_ids:
                 failed += 1

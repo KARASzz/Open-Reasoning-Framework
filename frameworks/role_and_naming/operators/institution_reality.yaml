@@ -1,0 +1,57 @@
+id: role.institution_reality
+unit_type: operator
+framework: role_and_naming
+version: 1.0.0
+status: active
+
+name:
+  zh: 制度语言与真实运行一致性
+
+description:
+  zh: >
+    对照制度文本描述的运行方式与组织真实运行方式，
+    识别制度空转（写在纸上）与潜规则替代（做在暗处）。
+
+inputs:
+  - type: problem_statement
+  - type: responsibility_rules
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 制度规定的流程与实际执行的流程差在哪里？
+  - 偏离是偶发还是稳定的替代规则？
+  - 组织成员是否都知道真实规则？新人如何学会？
+
+required_evidence:
+  - 制度文本
+  - 实际流程记录或多人一致证言
+  - 新人入职引导的隐性内容
+
+possible_findings:
+  - 制度与运行一致
+  - 制度空转（无人按制度执行）
+  - 存在稳定的潜规则替代
+  - 无法判断
+
+counterexamples:
+  - 偏离是制度刚修订后的适应期现象
+  - 表面偏离实为制度明示的例外条款被启用
+
+failure_conditions:
+  - 无法接触实际运行记录
+  - 成员因恐惧不敢如实描述
+
+boundary_criteria:
+  answers: 制度文本与实际运行的差距及模式
+  does_not_answer: 潜规则由谁的权力支撑（power_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null
