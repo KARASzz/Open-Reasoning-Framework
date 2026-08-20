@@ -1,0 +1,18 @@
+id: case_policy_001
+category: 公共治理
+status: seed
+
+problem: 一项政策执行后指标明显改善，但基层抱怨增加，如何判断真实效果？
+
+context: >
+  上级考核指标全面向好，但一线执行者反映填报负担激增、
+  部分改善来自口径调整而非实际变化。
+
+expected_dimensions:
+  - incentive_structure
+  - system_feedback
+  - falsification
+  - interest_structure
+
+golden_variables: []  # 待阶段二专家独立标注
+combinator_hint: cognitive_gap  # 上级 vs 基层的认知差分析

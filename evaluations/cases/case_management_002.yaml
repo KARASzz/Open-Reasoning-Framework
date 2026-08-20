@@ -1,0 +1,16 @@
+id: case_management_002
+category: 企业管理
+status: seed
+
+problem: 岗位叫"项目负责人"，但任何重要事项都必须逐级请示，项目推进缓慢该归因于谁？
+
+context: >
+  该岗位对外承担交付承诺，对内无预算审批权与人事权，
+  请示链条平均三级，响应周期以周计。
+
+expected_dimensions:
+  - role_and_naming
+  - power_structure
+  - incentive_structure
+
+golden_variables: []  # 待阶段二专家独立标注

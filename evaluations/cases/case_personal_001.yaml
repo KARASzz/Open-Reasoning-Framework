@@ -1,0 +1,17 @@
+id: case_personal_001
+category: 个人决策
+status: seed
+
+problem: 是否应该从稳定岗位辞职创业？
+
+context: >
+  决策者 35 岁，有家庭负担，对现岗位不满，观察到同行
+  创业有成功也有失败，已投入大量时间做创业准备。
+
+expected_dimensions:
+  - cognitive_bias
+  - bounded_rationality
+  - falsification
+  - incentive_structure
+
+golden_variables: []  # 待阶段二专家独立标注

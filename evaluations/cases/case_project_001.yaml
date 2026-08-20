@@ -1,0 +1,17 @@
+id: case_project_001
+category: 项目管理
+status: seed
+
+problem: 项目频繁延期，到底是执行问题还是系统问题？
+
+context: >
+  近半年六个项目中四个延期，管理层倾向归因于个别团队
+  执行力，但延期项目普遍存在跨部门等待与需求变更。
+
+expected_dimensions:
+  - system_feedback
+  - incentive_structure
+  - cognitive_bias
+  - role_and_naming
+
+golden_variables: []  # 待阶段二专家独立标注

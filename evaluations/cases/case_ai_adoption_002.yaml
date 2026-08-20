@@ -1,0 +1,16 @@
+id: case_ai_adoption_002
+category: AI 转型
+status: seed
+
+problem: 组织鼓励创新，但考核只看既定产出指标，为什么没人创新？
+
+context: >
+  创新口号写入年度文化目标，但绩效、晋升、奖金全部
+  挂钩既定产出指标，创新失败案例曾被公开复盘追责。
+
+expected_dimensions:
+  - incentive_structure
+  - cognitive_bias
+  - system_feedback
+
+golden_variables: []  # 待阶段二专家独立标注

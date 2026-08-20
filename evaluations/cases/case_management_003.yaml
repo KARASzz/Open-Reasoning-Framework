@@ -1,0 +1,16 @@
+id: case_management_003
+category: 企业管理
+status: seed
+
+problem: 名义上集体决策，实际上议题与结论在会前已由个别人定调，决策质量下降该怪谁？
+
+context: >
+  会议记录显示决议全票通过，但多位参会者私下表示
+  不同意见从未进入议程，反对者事后被边缘化。
+
+expected_dimensions:
+  - power_structure
+  - role_and_naming
+  - cognitive_bias
+
+golden_variables: []  # 待阶段二专家独立标注

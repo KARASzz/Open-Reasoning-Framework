@@ -1,0 +1,16 @@
+id: case_management_001
+category: 企业管理
+status: seed
+
+problem: 为什么公司员工普遍不愿意主动承担责任？
+
+context: >
+  管理层在多次会议中强调主人翁意识，但员工在跨部门事项、
+  模糊地带和失败风险较高的任务上普遍回避牵头。
+
+expected_dimensions:
+  - incentive_structure
+  - role_and_naming
+  - power_structure
+
+golden_variables: []  # 待阶段二专家独立标注

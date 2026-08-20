@@ -1,0 +1,17 @@
+id: case_ai_adoption_001
+category: AI 转型
+status: seed
+
+problem: 企业已经购买了 AI 工具，但员工真实使用率极低。
+
+context: >
+  组织已付费采购并组织了培训，管理层认为员工保守；
+  员工私下表示担心出错责任与数据安全。
+
+expected_dimensions:
+  - incentive_structure
+  - role_and_naming
+  - cognitive_bias
+  - bounded_rationality
+
+golden_variables: []  # 待阶段二专家独立标注

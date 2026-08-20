@@ -1,0 +1,17 @@
+id: case_project_002
+category: 项目管理
+status: seed
+
+problem: 管理层认为员工保守不愿用新工具，员工认为工具不可靠会背锅，僵局如何打破？
+
+context: >
+  新工具上线三个月，管理层通报批评使用率低的部门；
+  一线记录显示工具输出错误曾导致两次返工且责任归个人。
+
+expected_dimensions:
+  - cognitive_bias
+  - incentive_structure
+  - role_and_naming
+
+golden_variables: []  # 待阶段二专家独立标注
+combinator_hint: cognitive_gap  # 管理层 vs 一线的认知差分析

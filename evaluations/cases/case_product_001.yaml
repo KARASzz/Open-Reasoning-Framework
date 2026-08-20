@@ -1,0 +1,17 @@
+id: case_product_001
+category: 产品决策
+status: seed
+
+problem: 一个产品客户评价很好，但一直无法盈利，是否继续投入？
+
+context: >
+  产品已投入三年，口碑良好且用户留存高，但单位经济模型
+  持续为负，团队已多次调整定价未果。
+
+expected_dimensions:
+  - interest_structure
+  - cognitive_bias
+  - falsification
+  - bounded_rationality
+
+golden_variables: []  # 待阶段二专家独立标注
