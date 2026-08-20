@@ -9,22 +9,23 @@
 - [x] v0.2 升级设计 spec（`docs/superpowers/specs/2026-08-20-orf-prototype-v0.2-design.md`）
 - [x] v0.2 实施计划（`docs/superpowers/plans/2026-08-20-orf-prototype-v0.2-upgrade.md`）
 - [x] README 与 TODO
+- [x] v0.2 原型文档定稿（`Open_Reasoning_Framework_Prototype_v0.2.md`，八项决议全部落地）
 
-## 🔄 进行中：v0.2 原型文档升级
+## ✅ 已完成：v0.2 原型文档升级
 
 按实施计划的 9 个任务执行：
 
-- [ ] Task 1：创建 v0.2 底稿与修订说明（八项决议总账）
-- [ ] Task 2：三类可调用单位与引擎论证（§2/§5/§6）
-- [ ] Task 3：补写激励结构、权力关系框架 + 全部边界判据 + 博弈移入扩展（§7/§24）
-- [ ] Task 4：Operator Schema 类型化 + i18n 结构 + 边界判据（§8）
-- [ ] Task 5：运行流程 / 输出协议 / Runtime + Model Adapter（§9/§13/§17）
-- [ ] Task 6：Cross-Audit 机制完整化 + 认知差组合器（§11/§12）
-- [ ] Task 7：目录结构（operators 并入 frameworks）+ 评测两阶段地基化（§16/§18）
-- [ ] Task 8：风险一防线扩写 + Schema 变更治理（§21/§25）
-- [ ] Task 9：全文一致性终审，v0.2 定稿
+- [x] Task 1：创建 v0.2 底稿与修订说明（八项决议总账）
+- [x] Task 2：三类可调用单位与引擎论证（§2/§5/§6）
+- [x] Task 3：补写激励结构、权力关系框架 + 全部边界判据 + 博弈移入扩展（§7/§24）
+- [x] Task 4：Operator Schema 类型化 + i18n 结构 + 边界判据（§8）
+- [x] Task 5：运行流程 / 输出协议 / Runtime + Model Adapter（§9/§13/§17）
+- [x] Task 6：Cross-Audit 机制完整化 + 认知差组合器（§11/§12）
+- [x] Task 7：目录结构（operators 并入 frameworks）+ 评测两阶段地基化（§16/§18）
+- [x] Task 8：风险一防线扩写 + Schema 变更治理（§21/§25）
+- [x] Task 9：全文一致性终审，v0.2 定稿
 
-## ⏭️ 阶段一：内容建设（v0.2 定稿后）
+## ⏭️ 阶段一：内容建设（下一步）
 
 - [ ] 定义 JSON Schema：`framework.schema.json`、`operator.schema.json`、`combinator.schema.json`、`output.schema.json`
 - [ ] 人工制作首批 8 个 Framework 定义文件（含边界判据）

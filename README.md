@@ -44,9 +44,10 @@
 
 ## 当前状态
 
-原型阶段（v0.1），尚未包含任何运行时代码。
+原型阶段（v0.2 已定稿），尚未包含任何运行时代码。
 
-- 📄 原型文档：[`Open_Reasoning_Framework_Prototype_v0.1.md`](Open_Reasoning_Framework_Prototype_v0.1.md)
+- 📄 原型文档（当前）：[`Open_Reasoning_Framework_Prototype_v0.2.md`](Open_Reasoning_Framework_Prototype_v0.2.md)
+- 📄 上一版本：[`Open_Reasoning_Framework_Prototype_v0.1.md`](Open_Reasoning_Framework_Prototype_v0.1.md)
 - 📄 v0.2 升级设计 spec：[`docs/superpowers/specs/2026-08-20-orf-prototype-v0.2-design.md`](docs/superpowers/specs/2026-08-20-orf-prototype-v0.2-design.md)
 - 📄 v0.2 实施计划：[`docs/superpowers/plans/2026-08-20-orf-prototype-v0.2-upgrade.md`](docs/superpowers/plans/2026-08-20-orf-prototype-v0.2-upgrade.md)
 - 📋 待办路线图：[`TODO.md`](TODO.md)
