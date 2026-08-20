@@ -44,7 +44,16 @@
 
 ## 当前状态
 
-原型阶段（v0.2 已定稿），尚未包含任何运行时代码。
+原型阶段（v0.2 已定稿），内容建设进行中，尚未包含运行时代码。
+
+已完成：
+
+- **4 个 JSON Schema**（`schemas/`）：framework / operator / combinator / output；
+- **8 个 Framework 定义**（`frameworks/`）：角色与正名、利益结构、激励结构、权力关系、认知偏差、有限理性、系统反馈、证伪，均含边界判据；
+- **11 个 Operator**：激励结构完整算子组（8 个示范）+ 证伪首批（3 个），均为类型化转换器；
+- **认知差组合器**（`combinators/cognitive_gap/`）：立场参数化执行 + 结构化 diff；
+- **内容校验工具**（`tools/validate.py`）：Schema 校验 + 交叉引用检查，`python3 tools/validate.py --strict`；
+- **10 个评测种子案例**（`evaluations/cases/`）：六类真实脏问题。
 
 - 📄 原型文档（当前）：[`Open_Reasoning_Framework_Prototype_v0.2.md`](Open_Reasoning_Framework_Prototype_v0.2.md)
 - 📄 上一版本：[`Open_Reasoning_Framework_Prototype_v0.1.md`](Open_Reasoning_Framework_Prototype_v0.1.md)

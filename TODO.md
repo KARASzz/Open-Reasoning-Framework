@@ -25,13 +25,14 @@
 - [x] Task 8：风险一防线扩写 + Schema 变更治理（§21/§25）
 - [x] Task 9：全文一致性终审，v0.2 定稿
 
-## ⏭️ 阶段一：内容建设（下一步）
+## ⏭️ 阶段一：内容建设（进行中）
 
-- [ ] 定义 JSON Schema：`framework.schema.json`、`operator.schema.json`、`combinator.schema.json`、`output.schema.json`
-- [ ] 人工制作首批 8 个 Framework 定义文件（含边界判据）
-- [ ] 构建 60～100 个高质量 Operators（每个：标准问题、证据要求、≥2 反例、失效条件、类型化输入输出）
-- [ ] 实现认知差组合器的首个实例
-- [ ] 制作 30～50 个真实世界脏问题测试集（企业管理 / AI 转型 / 产品决策 / 项目管理 / 公共治理 / 个人决策）
+- [x] 定义 JSON Schema：`framework.schema.json`、`operator.schema.json`、`combinator.schema.json`、`output.schema.json`
+- [x] 人工制作首批 8 个 Framework 定义文件（含边界判据）
+- [ ] 构建 60～100 个高质量 Operators（每个：标准问题、证据要求、≥2 反例、失效条件、类型化输入输出）——**进行中 11/60+：激励结构完整组 8 + 证伪首批 3，其余 6 框架待建**
+- [x] 实现认知差组合器的首个实例
+- [ ] 制作 30～50 个真实世界脏问题测试集——**种子 10 个已就位，覆盖六类场景**
+- [x] 内容校验工具 `tools/validate.py`（Schema 校验 + 交叉引用检查）
 
 ## ⏭️ 阶段二：最小 Runtime
 
