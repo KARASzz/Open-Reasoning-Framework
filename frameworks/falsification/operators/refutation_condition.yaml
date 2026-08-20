@@ -1,0 +1,54 @@
+id: falsification.refutation_condition
+unit_type: operator
+framework: falsification
+version: 1.0.0
+status: active
+
+name:
+  zh: 推翻条件生成
+
+description:
+  zh: >
+    对每个重大假设强制生成可推翻条件：什么事实出现时，
+    应当放弃当前判断。证伪过关的第一道闸门。
+
+inputs:
+  - type: hypothesis
+  - type: evidence_reference
+
+outputs:
+  - type: overturn_condition
+  - type: uncertainty_assessment
+
+questions:
+  - 该假设若为假，世界应当呈现什么可观察状态？
+  - 支持证据与反对证据分别是什么？
+  - 是否存在无论事实如何都坚持该假设的倾向？
+
+required_evidence:
+  - 假设的完整表述
+  - 当前已知的支持与反对证据
+
+possible_findings:
+  - 可生成明确、可观察的推翻条件
+  - 只能生成弱推翻条件（需补充证据后才可检验）
+  - 假设当前不可检验，需先改写为可检验形式
+  - 无法判断
+
+counterexamples:
+  - 推翻条件存在但检验成本极高，实践中近似不可证伪
+  - 统计性假设的推翻条件是概率性的，单次反例不构成推翻
+
+failure_conditions:
+  - 假设表述含糊，无法确定其经验含义
+  - 假设属于纯价值判断（应移交价值声明而非证伪）
+
+boundary_criteria:
+  answers: 假设的可推翻条件是否可被明确表述
+  does_not_answer: 假设本身是否正确（需要后续验证行动）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

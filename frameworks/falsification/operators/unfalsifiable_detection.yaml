@@ -1,0 +1,54 @@
+id: falsification.unfalsifiable_detection
+unit_type: operator
+framework: falsification
+version: 1.0.0
+status: active
+
+name:
+  zh: 不可证伪陈述检测
+
+description:
+  zh: >
+    识别"怎么解释都成立"的陈述与特设性假设：任何反例都被
+    追加解释吸收的理论不具备信息量，应当标记并要求改写。
+
+inputs:
+  - type: hypothesis
+  - type: dialogue_records
+
+outputs:
+  - type: falsifiability_assessment
+  - type: evidence_reference
+
+questions:
+  - 是否存在任何可能的事实能够推翻该陈述？
+  - 面对反例时，陈述是被修正还是被追加解释吸收？
+  - 该陈述是否隐含不可观察的实体或动机？
+
+required_evidence:
+  - 陈述的原始表述
+  - 此前对该陈述提出质疑的记录（如有）
+
+possible_findings:
+  - 陈述可证伪
+  - 陈述不可证伪（怎么解释都成立）
+  - 陈述部分可证伪，需拆分
+  - 无法判断
+
+counterexamples:
+  - 表面不可证伪的陈述实为尚未找到测量手段（可操作化后变为可检验）
+  - 数学与逻辑命题不在经验证伪范围内，不应误判
+
+failure_conditions:
+  - 陈述过短，语义不足以判断其经验含义
+  - 陈述混合了事实主张与价值主张且无法拆分
+
+boundary_criteria:
+  answers: 陈述是否具备经验可检验性
+  does_not_answer: 不可证伪陈述是否仍然有用（实用价值另议）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

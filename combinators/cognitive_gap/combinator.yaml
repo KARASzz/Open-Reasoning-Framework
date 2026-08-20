@@ -1,0 +1,37 @@
+id: cognitive_gap
+unit_type: combinator
+version: 1.0.0
+status: active
+
+name:
+  zh: 认知差分析组合器
+
+description:
+  zh: >
+    认知差意味着：即使掌握相同信息，不同的人仍会形成完全不同
+    的解释和行动。本组合器将同一组 Operator 在不同立场参数下执行，
+    再对结果做结构化 diff，让不同的人在关键问题上共享同一套判断坐标。
+    目标不是消灭不同意见，而是暴露分歧的结构。
+
+inputs:
+  - type: problem_statement
+    description_zh: 待分析的问题
+  - type: stance
+    description_zh: 立场 A（如管理层视角）
+  - type: stance
+    description_zh: 立场 B（如一线员工视角）
+
+execution:
+  mode: stance_parameterized_diff
+  stance_parameter: stance
+  operator_selection: 由 Framework Selector 按与主流程相同的机制选择 3～7 个框架，两个立场使用同一组算子以保证可比性
+
+output_contract:
+  items:
+    - 共同事实
+    - 立场A解释
+    - 立场B解释
+    - 冲突点
+    - 潜在原因
+    - 需要统一的概念
+    - 需要保留的合理差异

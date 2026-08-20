@@ -1,0 +1,55 @@
+id: falsification.lowest_cost_test
+unit_type: operator
+framework: falsification
+version: 1.0.0
+status: active
+
+name:
+  zh: 最低成本验证设计
+
+description:
+  zh: >
+    在多个可检验假设中，设计成本最低、信息增益最高的下一步
+    验证行动，把结论转化为可执行的检验步骤。
+
+inputs:
+  - type: hypothesis
+  - type: overturn_condition
+  - type: resource_constraints
+
+outputs:
+  - type: validation_action
+  - type: uncertainty_assessment
+
+questions:
+  - 检验该推翻条件需要什么数据或实验？
+  - 各候选检验的成本（时间、金钱、人际代价）分别是多少？
+  - 哪个检验的结果最能区分竞争性假设？
+
+required_evidence:
+  - 已生成的推翻条件
+  - 用户可动用的资源与时间约束
+
+possible_findings:
+  - 存在低成本高信息增益的检验
+  - 检验可行但成本较高，需分期执行
+  - 当前无可执行检验，需先补充基础事实
+  - 无法判断
+
+counterexamples:
+  - 最低成本检验存在严重伦理或法律约束，不可实际执行
+  - 高信息增益检验的结果模糊，实际区分力低于预期
+
+failure_conditions:
+  - 推翻条件本身不明确
+  - 用户资源约束完全未知
+
+boundary_criteria:
+  answers: 下一步验证行动的选择与设计
+  does_not_answer: 验证结果出来后的判断更新（由再分析流程负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null
