@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reasoning-framework.org/schemas/output.schema.json",
+  "title": "ORF Analysis Output",
+  "description": "一次完整分析的结构化输出（§13 输出协议七层 + §22 审计要求）。推理图序列化后的顶层对象须通过本 Schema。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "problem",
+    "selection",
+    "facts",
+    "hypotheses",
+    "multi_framework_analysis",
+    "conflicts_and_counterexamples",
+    "falsification",
+    "next_validation",
+    "audit"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "problem": {
+      "type": "object",
+      "required": ["original", "restatement", "type_tags"],
+      "additionalProperties": false,
+      "properties": {
+        "original": { "type": "string", "minLength": 1 },
+        "restatement": { "type": "string", "minLength": 1 },
+        "type_tags": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "description": "第 0 层：选择理由。用户质疑与纠正的入口。",
+      "required": ["frameworks"],
+      "additionalProperties": false,
+      "properties": {
+        "frameworks": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 7,
+          "items": {
+            "type": "object",
+            "required": ["framework_id", "reason"],
+            "additionalProperties": false,
+            "properties": {
+              "framework_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+              "reason": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    "facts": {
+      "type": "array",
+      "description": "第 1 层：当前事实。每条标注来源。",
+      "items": {
+        "type": "object",
+        "required": ["content", "source"],
+        "additionalProperties": false,
+        "properties": {
+          "content": { "type": "string", "minLength": 1 },
+          "source": { "enum": ["user_provided", "model_inferred"] }
+        }
+      }
+    },
+    "hypotheses": {
+      "type": "array",
+      "description": "第 2 层：核心假设。允许竞争假设集形态；证据不足是一等合法输出。",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["content", "status", "overturn_conditions"],
+        "additionalProperties": false,
+        "properties": {
+          "content": { "type": "string", "minLength": 1 },
+          "status": {
+            "enum": ["standing", "challenged", "refuted", "insufficient_evidence"]
+          },
+          "supporting_evidence": { "type": "array", "items": { "type": "string" } },
+          "opposing_evidence": { "type": "array", "items": { "type": "string" } },
+          "overturn_conditions": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 },
+            "description": "可推翻条件：证伪过关的强制字段。"
+          }
+        }
+      }
+    },
+    "multi_framework_analysis": {
+      "type": "array",
+      "description": "第 3 层：多框架分析。",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["framework_id", "operators_called", "explanation"],
+        "additionalProperties": false,
+        "properties": {
+          "framework_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "operators_called": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*$" }
+          },
+          "explanation": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "conflicts_and_counterexamples": {
+      "type": "array",
+      "description": "第 4 层：冲突与反例。攻击契约的产物。",
+      "items": {
+        "type": "object",
+        "required": ["kind", "content", "attacker"],
+        "additionalProperties": false,
+        "properties": {
+          "kind": { "enum": ["conflict", "counterexample", "alternative_explanation", "no_substantive_attack"] },
+          "content": { "type": "string", "minLength": 1 },
+          "attacker": { "type": "string", "minLength": 1 },
+          "checked_items": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "no_substantive_attack 时的已检查项清单。"
+          }
+        }
+      }
+    },
+    "falsification": {
+      "type": "object",
+      "description": "第 5 层：推翻条件汇总。",
+      "required": ["overturn_conditions"],
+      "additionalProperties": false,
+      "properties": {
+        "overturn_conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "next_validation": {
+      "type": "array",
+      "description": "第 6 层：下一步验证。最低成本、最高信息增益的行动。",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["action", "expected_information_gain"],
+        "additionalProperties": false,
+        "properties": {
+          "action": { "type": "string", "minLength": 1 },
+          "expected_information_gain": { "type": "string", "minLength": 1 },
+          "cost_estimate": { "type": "string" }
+        }
+      }
+    },
+    "prior_analysis_ref": {
+      "type": "string",
+      "description": "无状态再分析：上一轮分析的引用标识（可选）。"
+    },
+    "new_evidence": {
+      "type": "array",
+      "description": "无状态再分析：本轮新增证据（可选）。",
+      "items": {
+        "type": "object",
+        "required": ["content"],
+        "properties": {
+          "content": { "type": "string", "minLength": 1 },
+          "affects_hypotheses": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "description": "§22 AI 治理：推理图溯源摘要。",
+      "required": [
+        "frameworks_used",
+        "operators_called",
+        "user_facts_count",
+        "model_inferences_count",
+        "framework_conflicts_count",
+        "retention_rationale"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "frameworks_used": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "operators_called": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "user_facts_count": { "type": "integer", "minimum": 0 },
+        "model_inferences_count": { "type": "integer", "minimum": 0 },
+        "framework_conflicts_count": { "type": "integer", "minimum": 0 },
+        "retention_rationale": {
+          "type": "string",
+          "minLength": 1,
+          "description": "最终为什么保留某个假设。"
+        },
+        "model_id": { "type": "string", "description": "经由 Model Adapter 记录的模型标识。" }
+      }
+    }
+  }
+}

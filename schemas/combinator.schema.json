@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reasoning-framework.org/schemas/combinator.schema.json",
+  "title": "ORF Combinator",
+  "description": "执行组合器定义文件（combinators/<id>/combinator.yaml）的校验 Schema。组合器不是新的内容单位，而是对 Operator 的执行组合模式。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "unit_type",
+    "version",
+    "status",
+    "name",
+    "description",
+    "inputs",
+    "execution",
+    "output_contract"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "组合器唯一标识，snake_case。"
+    },
+    "unit_type": {
+      "const": "combinator"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "status": {
+      "enum": ["active", "draft", "deprecated"]
+    },
+    "name": {
+      "$ref": "#/$defs/localized"
+    },
+    "description": {
+      "$ref": "#/$defs/localized"
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "description_zh": { "type": "string" }
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "required": ["mode"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": ["stance_parameterized_diff", "sequential_pipeline", "parallel_merge"],
+          "description": "组合执行模式。stance_parameterized_diff：同一组算子按不同立场参数化执行后做结构化 diff。"
+        },
+        "stance_parameter": {
+          "type": "string",
+          "description": "stance_parameterized_diff 模式下的立场参数类型，如 stance。"
+        },
+        "operator_selection": {
+          "type": "string",
+          "description": "算子选择策略说明（由 Framework Selector 同机制选择）。"
+        }
+      }
+    },
+    "output_contract": {
+      "type": "object",
+      "required": ["items"],
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "description": "固定输出项清单，Runtime 强制逐项填充。"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "required": ["zh"],
+      "additionalProperties": false,
+      "properties": {
+        "zh": { "type": "string", "minLength": 1 },
+        "en": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

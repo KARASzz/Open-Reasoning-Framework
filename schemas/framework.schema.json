@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reasoning-framework.org/schemas/framework.schema.json",
+  "title": "ORF Framework",
+  "description": "分析框架定义文件（frameworks/<id>/framework.yaml）的校验 Schema。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "unit_type",
+    "version",
+    "status",
+    "name",
+    "description",
+    "source",
+    "core_questions",
+    "boundary_criteria"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "框架唯一标识，snake_case。"
+    },
+    "unit_type": {
+      "const": "framework"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "语义化版本，变更须走 §21 变更记录流程。"
+    },
+    "status": {
+      "enum": ["active", "draft", "deprecated"]
+    },
+    "name": {
+      "$ref": "#/$defs/localized"
+    },
+    "description": {
+      "$ref": "#/$defs/localized"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "description": "思想或理论来源。人物仅作为来源元数据存在，不得成为运行单位。"
+    },
+    "core_questions": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "本框架的核心问题清单。"
+    },
+    "boundary_criteria": {
+      "$ref": "#/$defs/boundary_criteria"
+    },
+    "related_frameworks": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+      "description": "相邻框架 id 列表，用于边界判据互查。"
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "required": ["zh"],
+      "additionalProperties": false,
+      "properties": {
+        "zh": { "type": "string", "minLength": 1 },
+        "en": { "type": "string", "minLength": 1 }
+      },
+      "description": "localized map：MVP 阶段 zh 必填，en 预留。"
+    },
+    "boundary_criteria": {
+      "type": "object",
+      "required": ["answers", "does_not_answer"],
+      "additionalProperties": false,
+      "properties": {
+        "answers": { "type": "string", "minLength": 1 },
+        "does_not_answer": { "type": "string", "minLength": 1 }
+      },
+      "description": "边界判据：我回答什么 / 我不回答什么。"
+    }
+  }
+}

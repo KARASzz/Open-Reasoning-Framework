@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reasoning-framework.org/schemas/operator.schema.json",
+  "title": "ORF Operator",
+  "description": "推理算子定义文件（frameworks/<framework>/operators/*.yaml）的校验 Schema。Operator 是类型化转换器：类型化输入 → 类型化输出。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "unit_type",
+    "framework",
+    "version",
+    "status",
+    "name",
+    "description",
+    "inputs",
+    "outputs",
+    "questions",
+    "required_evidence",
+    "possible_findings",
+    "counterexamples",
+    "failure_conditions",
+    "boundary_criteria",
+    "output"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*$",
+      "description": "算子唯一标识，格式 <框架短名>.<算子名>，如 incentive.reward_risk_asymmetry。"
+    },
+    "unit_type": {
+      "const": "operator"
+    },
+    "framework": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "所属框架 id。"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "status": {
+      "enum": ["active", "draft", "deprecated"]
+    },
+    "name": {
+      "$ref": "#/$defs/localized"
+    },
+    "description": {
+      "$ref": "#/$defs/localized"
+    },
+    "inputs": {
+      "$ref": "#/$defs/typed_ports",
+      "description": "类型化输入：引用前序产物或用户输入的对象类型。"
+    },
+    "outputs": {
+      "$ref": "#/$defs/typed_ports",
+      "description": "类型化输出：写入推理图的对象。"
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "标准问题清单。"
+    },
+    "required_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "证据要求：得出可靠结论所需的事实材料。"
+    },
+    "possible_findings": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "可能结论枚举，必须包含'无法判断'类出口。"
+    },
+    "counterexamples": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "反例：至少 2 个，说明本算子结论可能不成立的情形。"
+    },
+    "failure_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "失效条件：何种输入情形下本算子不得执行或结论无效。"
+    },
+    "boundary_criteria": {
+      "$ref": "#/$defs/boundary_criteria"
+    },
+    "output": {
+      "type": "object",
+      "required": ["hypothesis", "evidence", "uncertainty", "next_validation"],
+      "description": "输出契约四件套占位，执行时由 Runtime 填充；缺任何一项即被 Runtime 拒绝。"
+    }
+  },
+  "$defs": {
+    "localized": {
+      "type": "object",
+      "required": ["zh"],
+      "additionalProperties": false,
+      "properties": {
+        "zh": { "type": "string", "minLength": 1 },
+        "en": { "type": "string", "minLength": 1 }
+      }
+    },
+    "boundary_criteria": {
+      "type": "object",
+      "required": ["answers", "does_not_answer"],
+      "additionalProperties": false,
+      "properties": {
+        "answers": { "type": "string", "minLength": 1 },
+        "does_not_answer": { "type": "string", "minLength": 1 }
+      }
+    },
+    "typed_ports": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "description_zh": { "type": "string" }
+        }
+      }
+    }
+  }
+}
