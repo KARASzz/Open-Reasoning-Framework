@@ -1,0 +1,56 @@
+id: power.synthesis
+unit_type: operator
+framework: power_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 权力结构综合判断
+
+description:
+  zh: >
+    综合算子：汇总本框架其余算子的发现，绘制实际权力地图，
+    判断权力集中度与制衡状况，输出整体假设。
+
+inputs:
+  - type: problem_statement
+  - type: operator_findings_set
+  - type: evidence_reference
+
+outputs:
+  - type: hypothesis
+  - type: uncertainty_assessment
+
+questions:
+  - 决策、否决、议程、信息四类权力是否集中于同一主体？
+  - 集中是否存在制衡（申诉、监督、外部约束）？
+  - 权力结构与名义组织结构偏差多大？
+
+required_evidence:
+  - 本框架其余算子的执行结果
+  - 至少一个完整的权力行使案例（提议→决策→执行/否决）
+
+possible_findings:
+  - 权力分散且制衡有效
+  - 权力高度集中且缺乏制衡
+  - 权力集中但存在有效制衡
+  - 名义与实际权力结构显著偏离
+  - 无法判断
+
+counterexamples:
+  - 集权是危机期临时安排且有明确退出机制
+  - 表面集权实为集体背书（签字者只是执行共识）
+
+failure_conditions:
+  - 前序算子执行不完整
+  - 权力行使案例不足
+
+boundary_criteria:
+  answers: 权力结构的整体地图与制衡判断
+  does_not_answer: 单项算子已覆盖的细分问题
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

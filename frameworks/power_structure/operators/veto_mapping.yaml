@@ -1,0 +1,57 @@
+id: power.veto_mapping
+unit_type: operator
+framework: power_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 否决权映射
+
+description:
+  zh: >
+    识别哪些主体拥有否决权（正式或非正式），以及否决权
+    的实际行使历史，绘制否决权地图。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: responsibility_rules
+
+outputs:
+  - type: veto_map
+  - type: hypothesis
+  - type: evidence_reference
+
+questions:
+  - 哪些事项必须经谁同意才能推进？
+  - 是否存在非正式否决者（未签字但能叫停）？
+  - 否决权近一年实际行使过几次、针对什么？
+
+required_evidence:
+  - 审批权限表
+  - 被叫停或推翻的事项记录
+  - 非正式影响力的多方证言
+
+possible_findings:
+  - 否决权分布与制度一致
+  - 存在制度外的隐性否决者
+  - 否决权集中导致决策瓶颈
+  - 无法判断
+
+counterexamples:
+  - 非正式否决实为专业把关（技术、合规），属必要制衡
+  - 表面否决权从不行使（纸面权力，实际无效力）
+
+failure_conditions:
+  - 无法区分"未推进"与"被否决"
+  - 非正式过程完全不可观察
+
+boundary_criteria:
+  answers: 否决权的归属与实际行使
+  does_not_answer: 议程为何根本不包含某些议题（power.agenda_setting 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

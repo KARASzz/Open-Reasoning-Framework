@@ -1,0 +1,58 @@
+id: power.agenda_setting
+unit_type: operator
+framework: power_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 议程设置权检查
+
+description:
+  zh: >
+    检查谁决定哪些问题被讨论、哪些不被讨论，识别比命令型
+    权力更隐蔽的议程设置型权力。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 会议议题由谁提出与筛选？
+  - 哪些议题反复被提出却从不进入讨论？
+  - 是否存在会前定调、会上走流程的模式？
+  - 提出敏感议题的人之后发生了什么？
+
+required_evidence:
+  - 议程制定流程与历史议程
+  - 被排除议题的记录或证言
+  - 会前沟通的实际模式
+
+possible_findings:
+  - 议程开放、多方均可提案
+  - 议程被特定主体系统性控制
+  - 议程控制存在但可被挑战
+  - 无法判断
+
+counterexamples:
+  - 议程集中是为决策效率（且存在定期开放提案窗口）
+  - 敏感议题未入议程因时机未成熟而非压制
+
+failure_conditions:
+  - 议程制定过程不可观察
+  - 无法获得被排除议题的证据
+
+boundary_criteria:
+  answers: 议程设置权的归属与行使模式
+  does_not_answer: 议程控制者的资源基础（interest_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

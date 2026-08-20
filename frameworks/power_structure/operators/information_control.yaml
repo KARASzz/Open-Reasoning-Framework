@@ -1,0 +1,57 @@
+id: power.information_control
+unit_type: operator
+framework: power_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 信息通道控制检查
+
+description:
+  zh: >
+    检查关键信息（数据、报告、汇报路径）由谁控制与过滤，
+    识别信息不对称被用作权力杠杆的结构。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: resource_inventory
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 决策所需数据由谁生产、由谁汇总、经谁上报？
+  - 各层级看到的信息版本是否一致？
+  - 是否存在绕过正式通道的信息垄断？
+
+required_evidence:
+  - 数据生产与上报流程
+  - 不同层级获取的信息样本对照
+  - 信息延迟或失真的案例
+
+possible_findings:
+  - 信息通道开放、版本一致
+  - 关键信息被特定主体过滤或延迟
+  - 存在平行的信息垄断通道
+  - 无法判断
+
+counterexamples:
+  - 信息分层是脱敏与合规要求（如薪酬数据）
+  - 信息延迟源于系统建设不足而非有意控制
+
+failure_conditions:
+  - 无法对照不同层级的信息版本
+  - 信息流完全不可观察
+
+boundary_criteria:
+  answers: 信息通道的控制权与过滤模式
+  does_not_answer: 信息控制对决策质量的影响评估（bounded_rationality 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

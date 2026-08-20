@@ -1,0 +1,57 @@
+id: power.decision_execution
+unit_type: operator
+framework: power_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 决策执行链检查
+
+description:
+  zh: >
+    追踪决策从提出到执行的完整链条，识别谁的决定能够被执行、
+    谁的决定被搁置或过滤。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 近期哪些决定被快速执行？由谁提出？
+  - 哪些决定被搁置、稀释或选择性执行？由谁提出？
+  - 执行链条中哪些环节有自由裁量空间？
+
+required_evidence:
+  - 会议纪要与决议记录
+  - 决议执行的跟踪记录
+  - 被搁置事项的清单
+
+possible_findings:
+  - 决定执行与决策权匹配
+  - 特定主体的决定系统性被快速执行
+  - 特定主体的决定系统性被搁置
+  - 无法判断
+
+counterexamples:
+  - 搁置源于资源约束而非权力过滤（所有同类决定都慢）
+  - 快速执行源于事项紧急性差异
+
+failure_conditions:
+  - 决议与执行记录不可得
+  - 决策过程口头化、无记录
+
+boundary_criteria:
+  answers: 哪些主体的决定实际获得执行
+  does_not_answer: 决定被搁置的动机（可能是利益或流程原因，需其他框架）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

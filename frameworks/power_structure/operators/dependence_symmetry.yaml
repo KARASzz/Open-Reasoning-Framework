@@ -1,0 +1,56 @@
+id: power.dependence_symmetry
+unit_type: operator
+framework: power_structure
+version: 1.0.0
+status: active
+
+name:
+  zh: 依赖关系与退出对称性
+
+description:
+  zh: >
+    检查主体间依赖是否单向、退出权是否对称，识别
+    "离不开"所构成的支配基础。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 各方分别依赖对方什么？依赖是否可替代？
+  - 哪一方退出的代价更高？
+  - 依赖不对称是否已被用于施压的历史案例？
+
+required_evidence:
+  - 双方关系条款（合同、岗位、市场地位）
+  - 替代选项的现实可得性
+  - 历史施压或要挟案例
+
+possible_findings:
+  - 依赖与退出权对称
+  - 单向依赖（一方支配另一方）
+  - 互相依赖但不对称
+  - 无法判断
+
+counterexamples:
+  - 单向依赖伴随对等保护条款（长期合同、工会）
+  - 依赖不对称但弱势方握有关键合法性资源（如监管背书）
+
+failure_conditions:
+  - 替代选项信息不可得
+  - 关系条款不透明
+
+boundary_criteria:
+  answers: 依赖结构与退出权的对称性
+  does_not_answer: 依赖关系中的收益分配（interest_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null
