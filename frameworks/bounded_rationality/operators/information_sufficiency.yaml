@@ -1,0 +1,57 @@
+id: bounded.information_sufficiency
+unit_type: operator
+framework: bounded_rationality
+version: 1.0.0
+status: active
+
+name:
+  zh: 决策信息充分性检查
+
+description:
+  zh: >
+    评估决策者实际掌握的信息与决策所需信息的差距，
+    识别在信息缺口上做出的高风险判断。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+  - type: resource_inventory
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 该决策需要哪些关键信息？
+  - 决策者实际掌握了其中多少？
+  - 缺口信息是可得而未取，还是客观不可得？
+
+required_evidence:
+  - 决策所需信息清单
+  - 决策者实际获得的信息记录
+  - 信息获取渠道的可用性
+
+possible_findings:
+  - 信息基本充分
+  - 存在可得未取的信息缺口
+  - 关键信息客观不可得
+  - 无法判断
+
+counterexamples:
+  - 信息缺口由成熟的风险对冲机制覆盖（保险、分阶段投入）
+  - 额外信息的边际价值低于获取成本（此时不取是理性的）
+
+failure_conditions:
+  - 无法还原决策所需信息清单
+  - 信息获取记录不可得
+
+boundary_criteria:
+  answers: 决策信息缺口的大小与性质
+  does_not_answer: 信息被过滤的权力原因（power_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

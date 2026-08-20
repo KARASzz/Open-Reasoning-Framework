@@ -1,0 +1,55 @@
+id: bounded.synthesis
+unit_type: operator
+framework: bounded_rationality
+version: 1.0.0
+status: active
+
+name:
+  zh: 有限理性综合判断
+
+description:
+  zh: >
+    综合算子：汇总信息、时间、处理能力与期望检查的发现，
+    判断决策失误主因是否为理性约束，并区分可改善与不可消除部分。
+
+inputs:
+  - type: problem_statement
+  - type: operator_findings_set
+  - type: evidence_reference
+
+outputs:
+  - type: hypothesis
+  - type: uncertainty_assessment
+
+questions:
+  - 理性约束中哪些可通过机制改善（信息、时间、工具）？
+  - 哪些约束是问题固有的、只能管理不能消除？
+  - 决策失误归因于理性约束的比例有多大？
+
+required_evidence:
+  - 本框架其余算子的执行结果
+  - 至少两个同类决策的对照案例
+
+possible_findings:
+  - 理性约束是主因且可大幅改善
+  - 理性约束是主因但只能有限改善
+  - 决策失误主因不在理性约束（移交其他框架）
+  - 无法判断
+
+counterexamples:
+  - 同样的约束条件下他人决策质量良好（说明主因在个体而非结构）
+  - 约束看似结构性实为近期临时状态
+
+failure_conditions:
+  - 前序算子执行不完整
+  - 缺乏对照案例
+
+boundary_criteria:
+  answers: 理性约束对决策质量影响的整体判断
+  does_not_answer: 单项算子已覆盖的细分问题
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

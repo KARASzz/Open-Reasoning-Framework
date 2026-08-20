@@ -1,0 +1,55 @@
+id: bounded.time_pressure
+unit_type: operator
+framework: bounded_rationality
+version: 1.0.0
+status: active
+
+name:
+  zh: 决策时间窗口检查
+
+description:
+  zh: >
+    评估决策可用时间与所需审议深度的匹配度，识别
+    时间压力下的草率决策与人为制造的紧迫感。
+
+inputs:
+  - type: problem_statement
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 该决策的真实截止约束来自哪里？
+  - 若多给一倍时间，哪些关键分析能够补上？
+  - 紧迫感是外部真实时限还是内部制造？
+
+required_evidence:
+  - 决策时限的来源与记录
+  - 类似决策的历史耗时对照
+
+possible_findings:
+  - 时间窗口与审议深度匹配
+  - 时间压力导致审议不足
+  - 紧迫感为人为制造
+  - 无法判断
+
+counterexamples:
+  - 真实危机下快速决策不可避免且有事后复盘机制
+  - 长审议历史表明更多时间也不会改善质量
+
+failure_conditions:
+  - 时限来源不可追溯
+  - 无法估计所需审议深度
+
+boundary_criteria:
+  answers: 时间约束对决策质量的影响
+  does_not_answer: 时间压力背后的激励设计（incentive_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

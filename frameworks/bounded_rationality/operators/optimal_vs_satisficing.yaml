@@ -1,0 +1,55 @@
+id: bounded.optimal_vs_satisficing
+unit_type: operator
+framework: bounded_rationality
+version: 1.0.0
+status: active
+
+name:
+  zh: 最优解与满意解期望检查
+
+description:
+  zh: >
+    检查组织对决策的期望是"最优解"还是"满意解"，识别
+    在不可能求最优的场景中强行求最优造成的延误与浪费。
+
+inputs:
+  - type: problem_statement
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 该决策是否存在客观可判的最优解？
+  - 组织文化奖励"找到最优"还是"足够好且可验证"？
+  - 为追求更优已付出多少额外成本？
+
+required_evidence:
+  - 决策标准文本（验收条件、通过标准）
+  - 追求更优的追加投入记录
+
+possible_findings:
+  - 期望与问题性质匹配
+  - 在满意解足矣的场景强求最优
+  - 在需要最优的场景接受敷衍
+  - 无法判断
+
+counterexamples:
+  - 求最优源于合规或安全硬性要求（非认知误区）
+  - 满意解标准被既得利益者操纵（此时是利益问题非理性问题）
+
+failure_conditions:
+  - 无法判断问题是否存在客观最优
+  - 决策标准未明文化
+
+boundary_criteria:
+  answers: 决策期望与问题性质的匹配度
+  does_not_answer: 决策标准的制定权归属（interest_structure / power_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

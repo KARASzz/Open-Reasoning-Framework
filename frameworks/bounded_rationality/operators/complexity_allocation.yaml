@@ -1,0 +1,56 @@
+id: bounded.complexity_allocation
+unit_type: operator
+framework: bounded_rationality
+version: 1.0.0
+status: active
+
+name:
+  zh: 复杂度吸收分配检查
+
+description:
+  zh: >
+    判断哪些复杂度应由系统（流程、工具、制度）吸收，
+    哪些判断必须保留给人，识别错配造成的低效与失控。
+
+inputs:
+  - type: problem_statement
+  - type: operator_findings_set
+
+outputs:
+  - type: hypothesis
+  - type: uncertainty_assessment
+
+questions:
+  - 当前哪些复杂度被推给了个人？能否流程化？
+  - 哪些本应由人判断的事项被交给了规则或系统？
+  - 错配最严重的环节在哪里？
+
+required_evidence:
+  - 现有流程与自动化覆盖范围
+  - 人工处理环节的负荷记录
+  - 规则失灵或误判案例
+
+possible_findings:
+  - 复杂度分配合理
+  - 人承担了应由系统吸收的复杂度
+  - 系统接管了应保留给人的判断
+  - 双向错配并存
+  - 无法判断
+
+counterexamples:
+  - 人工承担复杂度是过渡期安排（系统在建）
+  - 保留人工判断源于合规要求而非最优设计
+
+failure_conditions:
+  - 流程覆盖范围不清
+  - 无法区分设计意图与实际运行
+
+boundary_criteria:
+  answers: 复杂度在人与系统间的分配合理性
+  does_not_answer: 系统建设投入的优先级（属资源决策）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

@@ -1,0 +1,56 @@
+id: bounded.processing_capacity
+unit_type: operator
+framework: bounded_rationality
+version: 1.0.0
+status: active
+
+name:
+  zh: 处理能力与变量复杂度检查
+
+description:
+  zh: >
+    评估决策涉及的关键变量数量、交互复杂度与决策者
+    实际处理能力之间的差距。
+
+inputs:
+  - type: problem_statement
+  - type: actor_list
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 该决策涉及多少个相互影响的关键变量？
+  - 决策者是否有工具或团队支撑复杂分析？
+  - 历史上同类复杂决策的质量如何？
+
+required_evidence:
+  - 决策涉及变量的清单
+  - 分析工具与团队配置
+  - 历史同类决策记录
+
+possible_findings:
+  - 处理能力与复杂度匹配
+  - 复杂度显著超出处理能力
+  - 复杂度被外部专家或工具吸收
+  - 无法判断
+
+counterexamples:
+  - 表面复杂但存在主导变量（可简化决策且不失质量）
+  - 处理能力不足由分解决策化解（化整为零）
+
+failure_conditions:
+  - 变量清单无法枚举
+  - 处理能力无客观参照
+
+boundary_criteria:
+  answers: 复杂度与处理能力的匹配状态
+  does_not_answer: 复杂度应由系统还是人吸收（bounded.complexity_allocation 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null
