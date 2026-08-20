@@ -1,0 +1,55 @@
+id: cognition.anchoring
+unit_type: operator
+framework: cognitive_bias
+version: 1.0.0
+status: active
+
+name:
+  zh: 锚定效应检查
+
+description:
+  zh: >
+    检查判断是否被最先出现的数字或方案拖动，
+    后续调整是否围绕锚点不充分地展开。
+
+inputs:
+  - type: problem_statement
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 最先出现的数字或方案是什么？由谁提出？
+  - 最终结论与该锚点的距离有多大？
+  - 是否有人独立于锚点做过重新估算？
+
+required_evidence:
+  - 讨论记录（含发言顺序）
+  - 独立估算或外部基准（如有）
+
+possible_findings:
+  - 结论独立于锚点
+  - 锚定效应显著
+  - 锚点经过检验后被采纳
+  - 无法判断
+
+counterexamples:
+  - 首提案来自专业测算，收敛于锚点是合理的
+  - 多个竞争性锚点互相抵消
+
+failure_conditions:
+  - 无法还原锚点出现顺序
+  - 讨论无记录
+
+boundary_criteria:
+  answers: 初始信息对最终判断的拖动程度
+  does_not_answer: 锚点提出者的策略意图（博弈分析范畴，长期扩展）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

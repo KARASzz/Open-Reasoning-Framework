@@ -1,0 +1,56 @@
+id: cognition.confirmation_bias
+unit_type: operator
+framework: cognitive_bias
+version: 1.0.0
+status: active
+
+name:
+  zh: 确认偏差检查
+
+description:
+  zh: >
+    检查判断过程是否选择性收集与采信支持既有结论的信息，
+    同时低估或质疑反面证据。
+
+inputs:
+  - type: problem_statement
+  - type: hypothesis
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 支持性证据是否比反对性证据更早、更多地被收集？
+  - 反面证据出现时，第一反应是检验还是质疑其来源？
+  - 信息来源是否单一倾向？
+
+required_evidence:
+  - 信息收集记录与时间线
+  - 讨论中对反面证据的处理记录
+
+possible_findings:
+  - 无明显确认偏差
+  - 确认偏差显著
+  - 选择性存在但有主动纠偏机制
+  - 无法判断
+
+counterexamples:
+  - 时间约束下优先检验主流假设是合理启发式
+  - 反面证据缺席是因为确实不存在
+
+failure_conditions:
+  - 信息收集过程不可追溯
+  - 无法区分"先有结论"与"证据确凿"
+
+boundary_criteria:
+  answers: 信息收集与采信的方向性偏差
+  does_not_answer: 偏差背后的利益动机（interest_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

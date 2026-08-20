@@ -1,0 +1,55 @@
+id: cognition.availability
+unit_type: operator
+framework: cognitive_bias
+version: 1.0.0
+status: active
+
+name:
+  zh: 可得性启发检查
+
+description:
+  zh: >
+    检查是否把容易回忆、近期发生、生动具体的案例
+    当成高概率事件，忽视统计基率。
+
+inputs:
+  - type: problem_statement
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 判断依据的案例是生动个案还是统计基率？
+  - 该类事件的实际基率是多少？
+  - 案例样本是否偏向近期、身边、媒体报道？
+
+required_evidence:
+  - 讨论中引用的案例清单
+  - 相关事件的统计数据或基率
+
+possible_findings:
+  - 概率判断基于统计基率
+  - 可得性启发显著
+  - 个案与基率已做过对照
+  - 无法判断
+
+counterexamples:
+  - 引用生动案例是因为确实缺乏基率数据（数据基础设施问题）
+  - 近期案例反映的是真实结构变化（基率本身已改变）
+
+failure_conditions:
+  - 基率数据不可得且无法估计
+  - 讨论记录不完整
+
+boundary_criteria:
+  answers: 概率判断是否被易得案例扭曲
+  does_not_answer: 统计能力与数据条件（bounded_rationality 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

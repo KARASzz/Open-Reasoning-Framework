@@ -1,0 +1,58 @@
+id: cognition.groupthink
+unit_type: operator
+framework: cognitive_bias
+version: 1.0.0
+status: active
+
+name:
+  zh: 群体一致性压力检查
+
+description:
+  zh: >
+    检查群体决策中异议是否被沉默化，识别无异议幻觉
+    与对异议者的隐性惩罚。
+
+inputs:
+  - type: problem_statement
+  - type: dialogue_records
+  - type: actor_list
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 会议记录中是否存在异议与争论？
+  - 提出过异议的人后来发生了什么？
+  - 是否存在唱诗班式的长期全票通过？
+  - 有没有指定反对者或红队机制？
+
+required_evidence:
+  - 会议记录与表决情况
+  - 异议者的后续处境
+  - 私下表达与公开表态的差异
+
+possible_findings:
+  - 异议表达正常、被认真对待
+  - 群体一致性压力显著
+  - 存在异议机制但已形式化
+  - 无法判断
+
+counterexamples:
+  - 全票通过源于会前充分的独立书面审议
+  - 议题本身共识度真实地高（无结构性压力）
+
+failure_conditions:
+  - 讨论过程无记录
+  - 参与者不愿回忆或如实陈述
+
+boundary_criteria:
+  answers: 群体压力对异议表达的抑制程度
+  does_not_answer: 一致性背后的权力强制（power_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

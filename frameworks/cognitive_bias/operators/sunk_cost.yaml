@@ -1,0 +1,56 @@
+id: cognition.sunk_cost
+unit_type: operator
+framework: cognitive_bias
+version: 1.0.0
+status: active
+
+name:
+  zh: 沉没成本检查
+
+description:
+  zh: >
+    检查继续投入的依据是未来收益还是"已经投入"，
+    识别沉没成本绑架下的坚持。
+
+inputs:
+  - type: problem_statement
+  - type: action_outcome_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 支持继续投入的理由中，未来收益与既往投入各占多少？
+  - 若今天从零开始，是否仍会选择同一方案？
+  - 此前提出的止损建议是如何被否决的？
+
+required_evidence:
+  - 继续投入的决策记录与理由
+  - 既往投入的可回收性评估
+  - 替代方案的对照
+
+possible_findings:
+  - 投入基于未来收益评估
+  - 沉没成本影响显著
+  - 存在并在使用止损机制
+  - 无法判断
+
+counterexamples:
+  - 坚持源于合同、声誉等真实约束而非沉没成本心理
+  - 已投入部分确可转作他用（并非沉没）
+
+failure_conditions:
+  - 未来收益预期无法与既往投入话术分离
+  - 决策理由未留下记录
+
+boundary_criteria:
+  answers: 既往投入是否不当影响当前决策
+  does_not_answer: 损失厌恶的心理强度（cognition.loss_aversion 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

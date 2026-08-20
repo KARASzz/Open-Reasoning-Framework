@@ -1,0 +1,55 @@
+id: cognition.loss_aversion
+unit_type: operator
+framework: cognitive_bias
+version: 1.0.0
+status: active
+
+name:
+  zh: 损失厌恶检查
+
+description:
+  zh: >
+    检查决策是否由避损而非趋益主导：损失被高估、
+    收益被低估、维持现状被系统性偏好。
+
+inputs:
+  - type: problem_statement
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 方案的潜在损失与收益是如何被估量的？
+  - 放弃选择的机会成本是否被计入？
+  - 维持现状是否被默认为"零风险"？
+
+required_evidence:
+  - 决策讨论中的损益表述
+  - 历史"不变"决策及其后果记录
+
+possible_findings:
+  - 损益评估大体对称
+  - 损失厌恶主导、系统性维持现状
+  - 风险偏好合理（损失确不可承受）
+  - 无法判断
+
+counterexamples:
+  - 保守选择基于真实灾难性风险（破产级后果）
+  - 避损倾向来自受托责任（fiduciary duty）而非心理偏差
+
+failure_conditions:
+  - 损益量级无法估计
+  - 无法区分审慎与厌恶
+
+boundary_criteria:
+  answers: 损失厌恶是否系统性扭曲决策
+  does_not_answer: 风险管理制度是否恰当（属治理设计）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

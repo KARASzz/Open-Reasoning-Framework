@@ -1,0 +1,56 @@
+id: cognition.outcome_bias
+unit_type: operator
+framework: cognitive_bias
+version: 1.0.0
+status: active
+
+name:
+  zh: 结果偏差检查
+
+description:
+  zh: >
+    检查是否以结果好坏误判决策质量：好结果掩盖糟糕过程，
+    坏结果归罪于当时合理的决策。
+
+inputs:
+  - type: problem_statement
+  - type: action_outcome_records
+  - type: dialogue_records
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 决策当时的信息与选项是什么？过程是否合理？
+  - 好结果案例中有多少是运气成分？
+  - 评价与奖惩依据的是过程还是结果？
+
+required_evidence:
+  - 决策当时的记录（信息、选项、理由）
+  - 事后评价与奖惩记录
+
+possible_findings:
+  - 决策质量按过程评价
+  - 结果偏差显著（以成败论英雄）
+  - 过程与结果兼顾评价
+  - 无法判断
+
+counterexamples:
+  - 高频重复决策中，结果是过程质量的有效信号（统计上成立）
+  - 过程记录缺失，结果成为唯一可得证据
+
+failure_conditions:
+  - 无法还原决策当时情境
+  - 单次小样本决策无法分离运气与能力
+
+boundary_criteria:
+  answers: 结果对决策质量评价的扭曲程度
+  does_not_answer: 问责制度的公平性（role_and_naming / incentive_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null
