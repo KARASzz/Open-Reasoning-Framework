@@ -1,0 +1,54 @@
+id: system.variable_mapping
+unit_type: operator
+framework: system_feedback
+version: 1.0.0
+status: active
+
+name:
+  zh: 变量相互影响映射
+
+description:
+  zh: >
+    枚举问题涉及的关键变量及其相互影响方向与强度，
+    绘制因果影响图作为后续回路分析的基础。
+
+inputs:
+  - type: problem_statement
+  - type: action_outcome_records
+
+outputs:
+  - type: variable_graph
+  - type: evidence_reference
+
+questions:
+  - 哪些变量与该问题直接相关？
+  - 变量之间谁影响谁？方向与强弱如何？
+  - 哪些影响有实证记录，哪些是推测？
+
+required_evidence:
+  - 变量变化的历史数据
+  - 干预行动与后续变化的对应记录
+
+possible_findings:
+  - 变量关系清晰、可实证
+  - 关系复杂但主干可辨
+  - 关系高度不确定、需先补数据
+  - 无法判断
+
+counterexamples:
+  - 表面相关实为共同原因（第三变量问题）
+  - 数据期内的稳定掩盖了偶发强关联
+
+failure_conditions:
+  - 历史数据缺失
+  - 变量无法操作化定义
+
+boundary_criteria:
+  answers: 变量间影响关系的结构与置信度
+  does_not_answer: 回路性质判断（system.feedback_loops 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

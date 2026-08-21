@@ -1,0 +1,55 @@
+id: system.feedback_loops
+unit_type: operator
+framework: system_feedback
+version: 1.0.0
+status: active
+
+name:
+  zh: 正负反馈回路识别
+
+description:
+  zh: >
+    在变量图上识别自我强化（正反馈）与自我纠正（负反馈）
+    回路，判断系统当前的主导动力学。
+
+inputs:
+  - type: problem_statement
+  - type: variable_graph
+
+outputs:
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 哪些回路在放大变化（强者愈强、恶化螺旋）？
+  - 哪些回路在抑制变化（调节、饱和）？
+  - 当前哪类回路占主导？有无切换迹象？
+
+required_evidence:
+  - 变量图（variable_mapping 输出）
+  - 放大或收敛趋势的历史数据
+
+possible_findings:
+  - 正反馈主导（趋势自我强化中）
+  - 负反馈主导（系统趋于稳定）
+  - 多回路竞争、方向不明
+  - 无法判断
+
+counterexamples:
+  - 看似自我强化实为外部持续输入驱动（非内生回路）
+  - 负反馈因阈值未触发而暂未显现
+
+failure_conditions:
+  - 变量图不完整
+  - 时间序列数据不足
+
+boundary_criteria:
+  answers: 反馈回路的类型与主导性
+  does_not_answer: 回路中的延迟结构（system.delay_effects 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null
