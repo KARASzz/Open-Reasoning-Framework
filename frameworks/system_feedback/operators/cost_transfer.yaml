@@ -1,0 +1,59 @@
+id: system.cost_transfer
+unit_type: operator
+framework: system_feedback
+version: 1.0.0
+status: active
+
+name:
+  zh: 成本转移识别
+
+description:
+  zh: >
+    追踪局部优化或单点干预带来的成本变化，检查成本是否被转移到
+    下游环节、其他参与者、未来时期或未计量的系统变量。
+
+inputs:
+  - type: problem_statement
+  - type: variable_graph
+  - type: action_outcome_records
+
+outputs:
+  - type: cost_burden_map
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 被优化的环节减少了什么成本，哪些环节的成本随之上升？
+  - 成本是转移给下游、其他群体，还是推迟到未来才出现？
+  - 转移后的成本是否被现有指标、预算边界或责任边界隐藏？
+
+required_evidence:
+  - 干预前后的全链条成本与资源消耗记录
+  - 受影响环节、群体与时间范围的清单
+  - 对直接成本、间接成本与外部性计量边界的说明
+
+possible_findings:
+  - 系统总成本下降，未发现显著转移
+  - 成本转移到下游或其他参与者
+  - 成本被转移到未来，短期改善伴随长期负担
+  - 证据不足，无法判断成本总量变化
+  - 无法判断
+
+counterexamples:
+  - 短期成本上升是一次性建设投入，后续全链条成本确实下降
+  - 下游恶化与本次干预同期发生，但由独立的需求或供给冲击造成
+
+failure_conditions:
+  - 只观察局部预算或单一部门，无法覆盖成本承接方
+  - 没有可比的干预前基线或足够长的观察窗口
+
+boundary_criteria:
+  answers: 干预造成的成本在系统环节、参与者与时间上的转移路径
+  does_not_answer: 成本分配是否正当或谁应当承担责任（interest_structure、role_and_naming 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

@@ -1,0 +1,59 @@
+id: system.metric_distortion
+unit_type: operator
+framework: system_feedback
+version: 1.0.0
+status: active
+
+name:
+  zh: 指标优化失真检测
+
+description:
+  zh: >
+    检查被优化的代理指标是否逐渐脱离真实目标，识别阈值钻取、
+    计数替代质量以及指标改善而实际结果恶化等系统性失真。
+
+inputs:
+  - type: problem_statement
+  - type: metric_definitions
+  - type: action_outcome_records
+
+outputs:
+  - type: metric_behavior_gap
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 当前指标究竟代理哪个真实目标，代理关系是否仍然成立？
+  - 指标改善是否伴随未计量维度恶化、阈值行为或质量下降？
+  - 指标规则调整后，行动模式和端到端结果如何变化？
+
+required_evidence:
+  - 指标定义、权重、阈值与考核规则的版本记录
+  - 指标变化与实际行为、质量及最终结果的同期数据
+  - 被指标遗漏的风险、返工、投诉或其他负面结果记录
+
+possible_findings:
+  - 指标与真实目标仍保持稳定耦合
+  - 指标改善但真实目标未改善，代理关系已减弱
+  - 出现阈值钻取或计数替代质量的明显失真
+  - 真实目标尚未定义或观察窗口不足
+  - 无法判断
+
+counterexamples:
+  - 被误认为指标表演的行为确实提高了长期结果，只是收益尚未显现
+  - 真实结果恶化来自外部环境变化，而非指标规则诱发的行为调整
+
+failure_conditions:
+  - 只有指标数值，没有对应的目标定义或结果指标
+  - 指标、规则与行为数据无法按同一时期或同一对象对齐
+
+boundary_criteria:
+  answers: 代理指标与系统真实目标之间的结构性偏离
+  does_not_answer: 个体是否有意操纵指标及奖惩如何驱动其选择（incentive_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

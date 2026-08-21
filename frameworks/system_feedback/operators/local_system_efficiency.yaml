@@ -1,0 +1,59 @@
+id: system.local_system_efficiency
+unit_type: operator
+framework: system_feedback
+version: 1.0.0
+status: active
+
+name:
+  zh: 局部与系统效率对照
+
+description:
+  zh: >
+    对照局部环节指标与端到端系统结果，识别单点效率提升是否造成
+    排队、返工、质量下降或其他系统层面的损失。
+
+inputs:
+  - type: problem_statement
+  - type: variable_graph
+  - type: action_outcome_records
+
+outputs:
+  - type: efficiency_comparison
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 哪个局部环节的效率提高了，端到端结果是否同步改善？
+  - 是否出现瓶颈转移、等待增加、返工上升或质量下降？
+  - 局部指标与系统目标是否使用同一时间窗口和结果口径？
+
+required_evidence:
+  - 局部效率指标与端到端结果指标的同期记录
+  - 处理时长、等待、返工、质量和资源占用等过程数据
+  - 干预前基线与干预后稳定期的可比数据
+
+possible_findings:
+  - 局部效率与系统结果同步改善
+  - 局部效率提高但系统结果恶化
+  - 局部效率下降但系统结果改善，说明原局部指标误导
+  - 指标口径或时间窗口不一致，暂不能比较
+  - 无法判断
+
+counterexamples:
+  - 干预初期的学习成本造成暂时性系统下降，稳定期结果随后改善
+  - 系统结果变差由需求激增或外部约束造成，并非局部优化所致
+
+failure_conditions:
+  - 局部指标与系统结果没有共同的分母、时间窗口或基线
+  - 端到端结果无法被观测，只有局部活动数量记录
+
+boundary_criteria:
+  answers: 局部优化与端到端系统绩效之间的关系
+  does_not_answer: 指标奖惩如何塑造行动者动机（incentive_structure 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

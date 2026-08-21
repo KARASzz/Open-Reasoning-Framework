@@ -1,0 +1,58 @@
+id: system.synthesis
+unit_type: operator
+framework: system_feedback
+version: 1.0.0
+status: active
+
+name:
+  zh: 系统反馈综合判断
+
+description:
+  zh: >
+    综合变量映射、反馈回路、时间延迟、成本转移、效率对照与指标失真
+    的发现，判断问题的主导系统机制及最值得优先验证的环节。
+
+inputs:
+  - type: problem_statement
+  - type: operator_findings_set
+  - type: evidence_reference
+
+outputs:
+  - type: hypothesis
+  - type: uncertainty_assessment
+  - type: next_validation
+
+questions:
+  - 当前问题主要由哪条反馈回路、哪种延迟或哪条成本转移路径驱动？
+  - 局部效率、代理指标与系统结果之间是否存在同一条失真链条？
+  - 哪个未决事实最可能改变主导机制判断，下一步应如何验证？
+
+required_evidence:
+  - 本框架其余算子的执行结果及其证据引用
+  - 至少一个覆盖干预、过程变量与端到端结果的纵向案例
+  - 对各算子结论冲突、时间窗口和不确定性的显式说明
+
+possible_findings:
+  - 正反馈或负反馈主导，系统机制已有较强证据支持
+  - 时间延迟或状态切换是误判的主要来源
+  - 局部优化通过成本转移或指标失真损害系统结果
+  - 多个机制共同作用，但尚不能确定主导机制
+  - 无法判断
+
+counterexamples:
+  - 观察到的回路由持续外部输入维持，并非系统内部反馈
+  - 局部与系统指标的背离来自测量口径变化，而非真实系统退化
+
+failure_conditions:
+  - 前序算子执行不完整或关键证据无法追溯
+  - 各算子使用的时间窗口、对象范围或指标定义互不兼容
+
+boundary_criteria:
+  answers: 系统层面的主导反馈机制、延迟、转移与验证优先级
+  does_not_answer: 单个行动者的动机、利益正当性或角色责任归属（incentive_structure、interest_structure、role_and_naming 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null

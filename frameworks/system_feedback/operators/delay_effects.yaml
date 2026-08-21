@@ -1,0 +1,58 @@
+id: system.delay_effects
+unit_type: operator
+framework: system_feedback
+version: 1.0.0
+status: active
+
+name:
+  zh: 时间延迟效应识别
+
+description:
+  zh: >
+    识别干预、变量变化与结果显现之间的时间滞后，判断延迟是否导致
+    过早放弃、过度纠偏或反馈回路的阶段性误判。
+
+inputs:
+  - type: problem_statement
+  - type: variable_graph
+  - type: action_outcome_records
+
+outputs:
+  - type: delay_profile
+  - type: hypothesis
+  - type: evidence_reference
+  - type: uncertainty_assessment
+
+questions:
+  - 干预发生后，相关变量和结果分别经过多久才变化？
+  - 延迟长度是否稳定，还是随规模、状态或外部条件变化？
+  - 当前判断是否把尚未显现的效果误认为无效，或把滞后副作用遗漏了？
+
+required_evidence:
+  - 带时间戳的干预、变量变化与结果记录
+  - 至少两个相近周期或相近案例的时间序列
+  - 对测量延迟、执行延迟与真实因果延迟的区分依据
+
+possible_findings:
+  - 延迟较短且稳定，结果窗口可合理确定
+  - 存在显著延迟，当前结论可能过早
+  - 延迟随系统状态变化，反馈强度可能发生切换
+  - 无法判断
+
+counterexamples:
+  - 所谓延迟其实是数据采集或上报滞后，真实结果已先发生
+  - 结果变化来自同期外部冲击，而非此前干预的滞后效应
+
+failure_conditions:
+  - 干预、变量或结果缺少可对齐的时间戳
+  - 只有单次观察，无法区分延迟与随机波动
+
+boundary_criteria:
+  answers: 干预到结果之间的时间延迟及其对反馈判断的影响
+  does_not_answer: 变量影响方向的因果识别或正负反馈回路分类（system.variable_mapping、system.feedback_loops 负责）
+
+output:
+  hypothesis: null
+  evidence: null
+  uncertainty: null
+  next_validation: null
